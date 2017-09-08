@@ -10,8 +10,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
-    //TODO implement checking for duplicate
-
     private UserRepository userRepository;
 
     @Autowired
@@ -21,7 +19,7 @@ public class UserService {
 
     public UserRegisterResponse create(UserRegisterRequest request) {
 
-        if(!alreadyExists(request.getEmail())){
+        if(!userAlreadyExists(request.getEmail())){
             User user = new User(request.getEmail(), request.getPassword(), User.USER);
             userRepository.save(user);
             return new UserRegisterResponse();
@@ -31,7 +29,7 @@ public class UserService {
         }
     }
 
-    private boolean alreadyExists(String email){
+    private boolean userAlreadyExists(String email){
         return getUserByEmail(email) != null;
     }
 
