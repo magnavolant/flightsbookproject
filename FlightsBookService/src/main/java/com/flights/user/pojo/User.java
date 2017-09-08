@@ -1,4 +1,4 @@
-package com.flights.pojo;
+package com.flights.user.pojo;
 
 import javax.persistence.*;
 
@@ -24,6 +24,14 @@ public class User {
         this.email = email;
         this.password = password;
         this.role_id = role;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getEmail() {

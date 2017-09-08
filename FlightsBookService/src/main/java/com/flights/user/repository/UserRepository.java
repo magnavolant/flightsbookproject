@@ -1,6 +1,6 @@
-package com.flights.repository;
+package com.flights.user.repository;
 
-import com.flights.pojo.User;
+import com.flights.user.pojo.User;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;

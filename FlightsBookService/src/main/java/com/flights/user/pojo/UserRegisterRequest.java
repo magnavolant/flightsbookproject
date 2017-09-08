@@ -1,4 +1,4 @@
-package com.flights.pojo;
+package com.flights.user.pojo;
 
 public class UserRegisterRequest {
 
