@@ -3,9 +3,14 @@ package com.flights.pojo;
 public class UserRegisterResponse {
 
     private boolean success = true;
-    private String message = "OK";
+    private String message = "CREATED";
 
     public UserRegisterResponse() {
+    }
+
+    public UserRegisterResponse(boolean success, String message) {
+        this.success = success;
+        this.message = message;
     }
 
     public boolean isSuccess() {

@@ -20,9 +20,22 @@ public class UserService {
     }
 
     public UserRegisterResponse create(UserRegisterRequest request) {
-        User user = new User(request.getEmail(), request.getPassword(), User.USER);
-        userRepository.save(user);
-        return new UserRegisterResponse();
+
+        if(!alreadyExists(request.getEmail())){
+            User user = new User(request.getEmail(), request.getPassword(), User.USER);
+            userRepository.save(user);
+            return new UserRegisterResponse();
+        }else {
+            return new UserRegisterResponse
+                    (false, "USER WITH EMAIL " + request.getEmail() + " ALREADY EXISTS");
+        }
     }
 
+    private boolean alreadyExists(String email){
+        return getUserByEmail(email) != null;
+    }
+
+    public User getUserByEmail(String email){
+        return userRepository.getUserByEmail(email);
+    }
 }
