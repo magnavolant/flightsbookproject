@@ -1,4 +1,4 @@
-package com.flights.pojo;
+package com.flights.user.pojo;
 
 public class UserRegisterRequest {
 
@@ -6,6 +6,11 @@ public class UserRegisterRequest {
     private String password;
 
     public UserRegisterRequest() {
+    }
+
+    public UserRegisterRequest(String email, String password) {
+        this.email = email;
+        this.password = password;
     }
 
     public String getEmail() {
