@@ -3,7 +3,7 @@ package com.flights.user.pojo;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "tf_user")
+@Table(name = "sb_user")
 public class User {
 
     public static final int ADMIN = 1;

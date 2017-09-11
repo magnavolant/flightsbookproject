@@ -4,6 +4,8 @@ import com.flights.user.pojo.*;
 import com.flights.user.repository.UserAdditionalInfoRepository;
 import com.flights.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,37 +22,55 @@ public class UserService {
         this.userAdditionalInfoRepository = userAdditionalInfoRepository;
     }
 
-    public boolean changeUserAdditionalInfo(UserChangeInfoRequest request) {
-        User user = getUserByEmail(request.getEmail());
-        if (user != null) {
-            int userId = user.getId();
-            userAdditionalInfoRepository.setUserInfoByUserId
-                    (userId, request.getName(), request.getSurname());
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public UserAdditionalInfo getUserAdditionalInfoByEmail(String email) {
-        int userId = getUserByEmail(email).getId();
-        if (userAdditionalInfoRepository != null) {
-            return userAdditionalInfoRepository.getUserAdditionalInfoByUserId(userId);
-        } else {
-            return new UserAdditionalInfo();
-        }
-    }
-
-    public UserRegisterResponse create(UserRegisterRequest request) {
+    public ResponseEntity<UserRegisterResponse> create(UserRegisterRequest request) {
 
         if (!userAlreadyExists(request.getEmail())) {
             User user = new User(request.getEmail(), request.getPassword(), User.USER);
             userRepository.save(user);
-            return new UserRegisterResponse();
+            return new ResponseEntity<>(new UserRegisterResponse(), HttpStatus.OK);
         } else {
-            return new UserRegisterResponse
-                    (false, "USER WITH EMAIL " + request.getEmail() + " ALREADY EXISTS");
+            UserRegisterResponse errorResponse =
+                    new UserRegisterResponse(false, "USER WITH EMAIL " + request.getEmail() + " ALREADY EXISTS");
+
+            return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
         }
+    }
+
+    public ResponseEntity changeUserAdditionalInfo(UserChangeInfoRequest request) {
+
+        User user = getUserByEmail(request.getEmail());
+        if (user != null) {
+            int userId = user.getId();
+            if (userAdditionalInfoAlreadyExists(userId)) {
+                userAdditionalInfoRepository.setUserInfoByUserId(userId, request.getName(), request.getSurname());
+                return new ResponseEntity(HttpStatus.OK);
+            } else {
+                userAdditionalInfoRepository.save(new UserAdditionalInfo(userId, request.getName(), request.getSurname()));
+                return new ResponseEntity(HttpStatus.OK);
+            }
+        } else {
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    public ResponseEntity getUserAdditionalInfoByEmail(String email) {
+        User user = getUserByEmail(email);
+        if (user != null) {
+            int userId = user.getId();
+            if (userAdditionalInfoRepository.getUserAdditionalInfoByUserId(userId) != null) {
+                UserAdditionalInfo userInfo = userAdditionalInfoRepository
+                        .getUserAdditionalInfoByUserId(userId);
+                return new ResponseEntity<>(userInfo, HttpStatus.OK);
+            } else {
+                return new ResponseEntity(HttpStatus.NOT_FOUND);
+            }
+        } else {
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    private boolean userAdditionalInfoAlreadyExists(int userId) {
+        return userAdditionalInfoRepository.getUserAdditionalInfoByUserId(userId) != null;
     }
 
     private boolean userAlreadyExists(String email) {
