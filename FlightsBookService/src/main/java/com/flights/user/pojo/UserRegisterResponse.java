@@ -28,4 +28,15 @@ public class UserRegisterResponse {
     public void setMessage(String message) {
         this.message = message;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        UserRegisterResponse that = (UserRegisterResponse) o;
+
+        if (success != that.success) return false;
+        return message != null ? message.equals(that.message) : that.message == null;
+    }
 }
