@@ -4,7 +4,7 @@ package com.flights.flight.controller;
 import com.flights.flight.pojo.Flight;
 import com.flights.flight.pojo.FlightCreateRequest;
 import com.flights.flight.pojo.FlightSearchRequest;
-import com.flights.flight.service.FlightCreateResponse;
+import com.flights.flight.pojo.FlightCreateResponse;
 import com.flights.flight.service.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,7 +34,6 @@ public class FlightController {
 
     @RequestMapping(value = "/getflights", method = RequestMethod.POST)
     public ResponseEntity<List<Flight>> get(@RequestBody FlightSearchRequest flightSearchRequest) {
-        System.out.println();
         return flightService.getFlights(flightSearchRequest);
     }
 }

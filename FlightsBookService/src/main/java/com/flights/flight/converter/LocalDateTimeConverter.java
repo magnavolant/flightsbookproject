@@ -2,20 +2,20 @@ package com.flights.flight.converter;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Optional;
 
 
 @Converter(autoApply = true)
-public class LocalDateTimeConverter implements AttributeConverter<LocalDateTime, Timestamp> {
+public class LocalDateTimeConverter implements AttributeConverter<LocalDate, Date> {
     @Override
-    public Timestamp convertToDatabaseColumn(LocalDateTime localDateTime) {
-        return Optional.ofNullable(localDateTime).map(Timestamp::valueOf).orElse(null);
+    public Date convertToDatabaseColumn(LocalDate localDate) {
+        return Optional.ofNullable(localDate).map(Date::valueOf).orElse(null);
     }
 
     @Override
-    public LocalDateTime convertToEntityAttribute(Timestamp timestamp) {
-        return Optional.ofNullable(timestamp).map(Timestamp::toLocalDateTime).orElse(null);
+    public LocalDate convertToEntityAttribute(Date date) {
+        return Optional.ofNullable(date).map(Date::toLocalDate).orElse(null);
     }
 }

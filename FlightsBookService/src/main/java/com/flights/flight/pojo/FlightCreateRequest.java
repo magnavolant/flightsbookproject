@@ -1,9 +1,8 @@
 package com.flights.flight.pojo;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 
 public class FlightCreateRequest {
 
@@ -11,36 +10,28 @@ public class FlightCreateRequest {
     private BigDecimal price;
     private String whence;
     private String destination;
-    private LocalDateTime departureDate;
+    private LocalDate departureDate;
+    private LocalTime departureTime;
     private LocalTime flightTime;
     private int freeSeatsNumber;
 
-    DateTimeFormatter myFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
-    public FlightCreateRequest(){}
+    public FlightCreateRequest() {
+    }
 
     public String getFlightNumber() {
         return flightNumber;
+    }
+
+    public void setFlightNumber(String flightNumber) {
+        this.flightNumber = flightNumber;
     }
 
     public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
-        this.price = BigDecimal.valueOf(price);
-    }
-
-    public int getFreeSeatsNumber() {
-        return freeSeatsNumber;
-    }
-
-    public void setFreeSeatsNumber(int freeSeatsNumber) {
-        this.freeSeatsNumber = freeSeatsNumber;
-    }
-
-    public void setFlightNumber(String flightNumber) {
-        this.flightNumber = flightNumber;
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
     public String getWhence() {
@@ -59,19 +50,35 @@ public class FlightCreateRequest {
         this.destination = destination;
     }
 
+    public LocalDate getDepartureDate() {
+        return departureDate;
+    }
+
+    public void setDepartureDate(String departureDate) {
+        this.departureDate = LocalDate.parse(departureDate);
+    }
+
+    public LocalTime getDepartureTime() {
+        return departureTime;
+    }
+
+    public void setDepartureTime(String departureTime) {
+        this.departureTime = LocalTime.parse(departureTime);
+    }
+
     public LocalTime getFlightTime() {
         return flightTime;
     }
 
-    public LocalDateTime getDepartureDate() {
-        return departureDate;
-    }
-
-    public void setFlightTime (String flightTime) {
+    public void setFlightTime(String flightTime) {
         this.flightTime = LocalTime.parse(flightTime);
     }
 
-    public void setDepartureDate (String departureDate){
-        this.departureDate = LocalDateTime.parse(departureDate, myFormatter);
+    public int getFreeSeatsNumber() {
+        return freeSeatsNumber;
+    }
+
+    public void setFreeSeatsNumber(int freeSeatsNumber) {
+        this.freeSeatsNumber = freeSeatsNumber;
     }
 }

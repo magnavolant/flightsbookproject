@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 
@@ -17,21 +17,22 @@ public class Flight{
     @JsonIgnore
     private int id;
 
+    @Column(name = "flight_number")
     private String flightNumber;
 
-    @Column(name = "destination")
     private String destination;
 
-    @Column(name = "whence")
     private String whence;
 
     @Column(name = "departure_date")
-    private LocalDateTime departureDate;
+    private LocalDate departureDate;
+
+    @Column(name = "departure_time")
+    private LocalTime localTime;
 
     @Column(name = "flight_time")
     private LocalTime flightTime;
 
-    @Column(name = "price")
     private BigDecimal price;
 
     @Column(name = "free_seats")
@@ -40,14 +41,31 @@ public class Flight{
 
     public Flight(){}
 
-    public Flight(String flightNumber, String destination, String whence, LocalDateTime departureDate, LocalTime flightTime, BigDecimal price, int freeSeatsNumber) {
+    public Flight(String flightNumber, String destination, String whence, LocalDate departureDate, LocalTime localTime, LocalTime flightTime, BigDecimal price, int freeSeatsNumber) {
         this.flightNumber = flightNumber;
         this.destination = destination;
         this.whence = whence;
         this.departureDate = departureDate;
+        this.localTime = localTime;
         this.flightTime = flightTime;
         this.price = price;
         this.freeSeatsNumber = freeSeatsNumber;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public LocalTime getLocalTime() {
+        return localTime;
+    }
+
+    public void setLocalTime(LocalTime localTime) {
+        this.localTime = localTime;
     }
 
     public LocalTime getFlightTime() {
@@ -82,11 +100,11 @@ public class Flight{
         this.whence = whence;
     }
 
-    public LocalDateTime getDepartureDate() {
+    public LocalDate getDepartureDate() {
         return departureDate;
     }
 
-    public void setDepartureDate(LocalDateTime departureDate) {
+    public void setDepartureDate(LocalDate departureDate) {
         this.departureDate = departureDate;
     }
 

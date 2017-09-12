@@ -1,16 +1,16 @@
 package com.flights.flight.service;
 
 
-import com.flights.flight.pojo.Flight;
-import com.flights.flight.pojo.FlightBuilder;
-import com.flights.flight.pojo.FlightCreateRequest;
-import com.flights.flight.pojo.FlightSearchRequest;
+import com.flights.flight.pojo.*;
 import com.flights.flight.repository.FlightRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 @Service
@@ -30,6 +30,7 @@ public class FlightService {
                     .setDestination(flightCreateRequest.getDestination())
                     .setWhence(flightCreateRequest.getWhence())
                     .setDepartureDate(flightCreateRequest.getDepartureDate())
+                    .setDepartureTime(flightCreateRequest.getDepartureTime())
                     .setArrivalDate(flightCreateRequest.getFlightTime())
                     .setPrice(flightCreateRequest.getPrice())
                     .setFreeSeatsNumber(flightCreateRequest.getFreeSeatsNumber())
@@ -45,10 +46,13 @@ public class FlightService {
 
     public ResponseEntity<List<Flight>> getFlights(FlightSearchRequest request) {
 
+        LocalDate date = request.getDepartureDate();
+        LocalDateTime localDateTime = LocalDateTime.of(date, LocalTime.of(0, 0));
+
         return new ResponseEntity<>(flightRepository.getFlights(
                 request.getWhenceAirportCode(),
                 request.getDestinationAirportCode(),
-                request.getDepartureDate(),
+                localDateTime,
                 request.getPeopleAmount()), HttpStatus.OK);
     }
 

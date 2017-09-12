@@ -1,4 +1,4 @@
-package com.flights.flight.service;
+package com.flights.flight.pojo;
 
 public class FlightCreateResponse {
     private boolean success = true;
