@@ -1,4 +1,4 @@
-package com.flights.converter;
+package com.flights.flight.converter;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

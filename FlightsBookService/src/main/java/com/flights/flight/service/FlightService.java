@@ -1,8 +1,9 @@
 package com.flights.flight.service;
 
 
-import com.flights.flight.Flight;
-import com.flights.flight.FlightCreateRequest;
+import com.flights.flight.pojo.Flight;
+import com.flights.flight.pojo.FlightBuilder;
+import com.flights.flight.pojo.FlightCreateRequest;
 import com.flights.flight.repository.FlightRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,13 +21,16 @@ public class FlightService {
 
     public FlightCreateResponse create (FlightCreateRequest flightCreateRequest){
         if (!flightExists(flightCreateRequest.getFlightNumber())){
-            Flight flight = new Flight(flightCreateRequest.getFlightNumber(),
-                    flightCreateRequest.getDestination(),
-                    flightCreateRequest.getWhence(),
-                    flightCreateRequest.getDepartureDate(),
-                    flightCreateRequest.getArrivalDate(),
-                    flightCreateRequest.getPrice(),
-                    flightCreateRequest.getFreeSeatsNumber());
+            Flight flight = new FlightBuilder()
+                    .setFlightNumber(flightCreateRequest.getFlightNumber())
+                    .setDestination(flightCreateRequest.getDestination())
+                    .setWhence(flightCreateRequest.getWhence())
+                    .setDepartureDate(flightCreateRequest.getDepartureDate())
+                    .setArrivalDate(flightCreateRequest.getArrivalDate())
+                    .setPrice(flightCreateRequest.getPrice())
+                    .setFreeSeatsNumber(flightCreateRequest.getFreeSeatsNumber())
+                    .createFlight();
+
             flightRepository.save(flight);
             return new FlightCreateResponse();
         }else {
@@ -35,7 +39,6 @@ public class FlightService {
         }
     }
 
-
     private boolean flightExists(String flightNumber){
         return getFlightByNumber(flightNumber) != null;
     }
@@ -43,12 +46,5 @@ public class FlightService {
     private Flight getFlightByNumber(String flightNumber){
         return flightRepository.getFlightByNumber(flightNumber);
     }
-    /*
 
-e {
-            return new UserRegisterResponse
-                    (false, "USER WITH EMAIL " + request.getEmail() + " ALREADY EXISTS");
-        }
-    }
-*/
 }

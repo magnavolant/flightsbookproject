@@ -1,7 +1,7 @@
-package com.flights.controller;
+package com.flights.flight.controller;
 
 
-import com.flights.flight.FlightCreateRequest;
+import com.flights.flight.pojo.FlightCreateRequest;
 import com.flights.flight.service.FlightCreateResponse;
 import com.flights.flight.service.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.flights.flight;
+package com.flights.flight.pojo;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -37,7 +37,6 @@ public class Flight{
 
     public Flight(){}
 
-
     public Flight(String flightNumber, String destination, String whence, LocalDateTime departureDate, LocalDateTime arrivalDate, BigDecimal price, int freeSeatsNumber) {
         this.flightNumber = flightNumber;
         this.destination = destination;
@@ -47,8 +46,6 @@ public class Flight{
         this.price = price;
         this.freeSeatsNumber = freeSeatsNumber;
     }
-
-
 
     public String getFlightNumber() {
         return flightNumber;
