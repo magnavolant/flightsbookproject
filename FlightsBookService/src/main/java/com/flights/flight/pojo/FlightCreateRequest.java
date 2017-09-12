@@ -2,6 +2,7 @@ package com.flights.flight.pojo;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class FlightCreateRequest {
@@ -10,12 +11,11 @@ public class FlightCreateRequest {
     private BigDecimal price;
     private String whence;
     private String destination;
-    private LocalDateTime arrivalDate;
     private LocalDateTime departureDate;
+    private LocalTime flightTime;
     private int freeSeatsNumber;
 
-
-    DateTimeFormatter myFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");;
+    DateTimeFormatter myFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     public FlightCreateRequest(){}
 
@@ -59,26 +59,17 @@ public class FlightCreateRequest {
         this.destination = destination;
     }
 
-    public LocalDateTime getArrivalDate() {
-        return arrivalDate;
+    public LocalTime getFlightTime() {
+        return flightTime;
     }
-
-//    public void setArrivalDate(LocalDate arrivalDate) {
-//        this.arrivalDate = arrivalDate;
-//    }
 
     public LocalDateTime getDepartureDate() {
         return departureDate;
     }
 
-//    public void setDepartureDate(LocalDate departureDate) {
-//        this.departureDate = departureDate;
-//    }
-
-    public void setArrivalDate (String arrivalDate) {
-        this.arrivalDate = LocalDateTime.parse(arrivalDate, myFormatter);
+    public void setFlightTime (String flightTime) {
+        this.flightTime = LocalTime.parse(flightTime);
     }
-
 
     public void setDepartureDate (String departureDate){
         this.departureDate = LocalDateTime.parse(departureDate, myFormatter);

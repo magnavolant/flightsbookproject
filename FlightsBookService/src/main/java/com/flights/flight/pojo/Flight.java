@@ -1,8 +1,11 @@
 package com.flights.flight.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 
 @Entity
@@ -11,6 +14,7 @@ public class Flight{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private int id;
 
     private String flightNumber;
@@ -22,11 +26,10 @@ public class Flight{
     private String whence;
 
     @Column(name = "departure_date")
-
     private LocalDateTime departureDate;
 
-    @Column(name = "arrival_date")
-    private LocalDateTime arrivalDate;
+    @Column(name = "flight_time")
+    private LocalTime flightTime;
 
     @Column(name = "price")
     private BigDecimal price;
@@ -37,14 +40,22 @@ public class Flight{
 
     public Flight(){}
 
-    public Flight(String flightNumber, String destination, String whence, LocalDateTime departureDate, LocalDateTime arrivalDate, BigDecimal price, int freeSeatsNumber) {
+    public Flight(String flightNumber, String destination, String whence, LocalDateTime departureDate, LocalTime flightTime, BigDecimal price, int freeSeatsNumber) {
         this.flightNumber = flightNumber;
         this.destination = destination;
         this.whence = whence;
         this.departureDate = departureDate;
-        this.arrivalDate = arrivalDate;
+        this.flightTime = flightTime;
         this.price = price;
         this.freeSeatsNumber = freeSeatsNumber;
+    }
+
+    public LocalTime getFlightTime() {
+        return flightTime;
+    }
+
+    public void setFlightTime(LocalTime flightTime) {
+        this.flightTime = flightTime;
     }
 
     public String getFlightNumber() {
@@ -77,14 +88,6 @@ public class Flight{
 
     public void setDepartureDate(LocalDateTime departureDate) {
         this.departureDate = departureDate;
-    }
-
-    public LocalDateTime getArrivalDate() {
-        return arrivalDate;
-    }
-
-    public void setArrivalDate(LocalDateTime arrivalDate) {
-        this.arrivalDate = arrivalDate;
     }
 
     public BigDecimal getPrice() {

@@ -2,13 +2,14 @@ package com.flights.flight.pojo;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 public class FlightBuilder {
     private String flightNumber;
     private String destination;
     private String whence;
     private LocalDateTime departureDate;
-    private LocalDateTime arrivalDate;
+    private LocalTime flightTime;
     private BigDecimal price;
     private int freeSeatsNumber;
 
@@ -32,8 +33,8 @@ public class FlightBuilder {
         return this;
     }
 
-    public FlightBuilder setArrivalDate(LocalDateTime arrivalDate) {
-        this.arrivalDate = arrivalDate;
+    public FlightBuilder setArrivalDate(LocalTime flightTime) {
+        this.flightTime = flightTime;
         return this;
     }
 
@@ -48,6 +49,6 @@ public class FlightBuilder {
     }
 
     public Flight createFlight() {
-        return new Flight(flightNumber, destination, whence, departureDate, arrivalDate, price, freeSeatsNumber);
+        return new Flight(flightNumber, destination, whence, departureDate, flightTime, price, freeSeatsNumber);
     }
 }
