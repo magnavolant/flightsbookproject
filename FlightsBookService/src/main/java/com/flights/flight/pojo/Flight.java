@@ -36,6 +36,7 @@ public class Flight{
     private BigDecimal price;
 
     @Column(name = "free_seats")
+    @JsonIgnore
     private int freeSeatsNumber;
 
 

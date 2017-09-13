@@ -8,9 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.List;
 
 @Service
@@ -46,14 +43,29 @@ public class FlightService {
 
     public ResponseEntity<List<Flight>> getFlights(FlightSearchRequest request) {
 
-        LocalDate date = request.getDepartureDate();
-        LocalDateTime localDateTime = LocalDateTime.of(date, LocalTime.of(0, 0));
-
-        return new ResponseEntity<>(flightRepository.getFlights(
+        List<Flight> flights = flightRepository.getFlights(
                 request.getWhenceAirportCode(),
                 request.getDestinationAirportCode(),
-                localDateTime,
-                request.getPeopleAmount()), HttpStatus.OK);
+                request.getDepartureDate(),
+                request.getPeopleAmount()
+        );
+
+        if(!flights.isEmpty()){
+            return new ResponseEntity<>(flights, HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    public ResponseEntity<List<Airport>> getAirports(String request){
+
+        List<Airport> airports = flightRepository.getAirports(request);
+
+        if(!airports.isEmpty()){
+            return new ResponseEntity<>(airports, HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     private boolean flightExists(String flightNumber) {

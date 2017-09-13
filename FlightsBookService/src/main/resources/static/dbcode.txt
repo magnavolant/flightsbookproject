@@ -1,41 +1,41 @@
-CREATE TABLE sb_user(
-  id SERIAL PRIMARY KEY,
-  email TEXT NOT NULL,
+CREATE TABLE sb_user (
+  id       SERIAL PRIMARY KEY,
+  email    TEXT NOT NULL,
   password TEXT NOT NULL,
-  role_id INT NOT NULL,
-  enabled BOOL DEFAULT TRUE
+  role_id  INT  NOT NULL,
+  enabled  BOOL DEFAULT TRUE
 );
-CREATE TABLE sb_additional_info(
-  id SERIAL PRIMARY KEY,
-  user_id INT NOT NULL,
-  name TEXT NOT NULL,
+CREATE TABLE sb_additional_info (
+  id      SERIAL PRIMARY KEY,
+  user_id INT  NOT NULL,
+  name    TEXT NOT NULL,
   surname TEXT NOT NULL
 );
-CREATE TABLE sb_role(
-  id SERIAL PRIMARY KEY,
+CREATE TABLE sb_role (
+  id        SERIAL PRIMARY KEY,
   role_name TEXT NOT NULL
 );
-CREATE TABLE sb_flight(
-  id SERIAL PRIMARY KEY,
-  flight_number TEXT NOT NULL,
-  price DECIMAL(5,2) NOT NULL,
-  whence TEXT NOT NULL,
-  destination TEXT NOT NULL,
-  departure_date TIMESTAMP NOT NULL,
-  flight_time TIME NOT NULL,
-  free_seats INT NOT NULL
+CREATE TABLE sb_flight (
+  id             SERIAL PRIMARY KEY,
+  flight_number  TEXT          NOT NULL,
+  price          DECIMAL(5, 2) NOT NULL,
+  whence         TEXT          NOT NULL,
+  destination    TEXT          NOT NULL,
+  departure_date DATE          NOT NULL,
+  departure_time TIME          NOT NULL,
+  flight_time    TIME          NOT NULL,
+  free_seats     INT           NOT NULL
 );
-CREATE TABLE sb_user_flight(
-  id SERIAL PRIMARY KEY,
-  user_id INT NOT NULL,
+CREATE TABLE sb_user_flight (
+  id        SERIAL PRIMARY KEY,
+  user_id   INT NOT NULL,
   flight_id INT NOT NULL
 );
-CREATE TABLE sb_airport(
-  id SERIAL PRIMARY KEY,
+CREATE TABLE sb_airport (
+  id           SERIAL PRIMARY KEY,
   airport_code VARCHAR(3),
-  country TEXT NOT NULL,
-  town_name TEXT NOT NULL,
-  airport_name TEXT NOT NULL
+  country      TEXT NOT NULL,
+  town_name    TEXT NOT NULL
 );
 
 ALTER TABLE sb_user
@@ -44,25 +44,35 @@ FOREIGN KEY (role_id)
 REFERENCES sb_role (id);
 
 ALTER TABLE sb_additional_info
-    ADD CONSTRAINT fk_user
+  ADD CONSTRAINT fk_user
 FOREIGN KEY (user_id)
-REFERENCES sb_user(id);
+REFERENCES sb_user (id);
 
 ALTER TABLE sb_user_flight
-    ADD CONSTRAINT fk_user
+  ADD CONSTRAINT fk_user
 FOREIGN KEY (user_id)
-REFERENCES sb_user(id);
+REFERENCES sb_user (id);
 
 ALTER TABLE sb_user_flight
   ADD CONSTRAINT fk_flight
 FOREIGN KEY (flight_id)
-REFERENCES sb_flight(id);
+REFERENCES sb_flight (id);
 
 INSERT INTO sb_role (role_name) VALUES ('ROLE_ADMIN');
 INSERT INTO sb_role (role_name) VALUES ('ROLE_USER');
 
--- INSERT INTO sb_flight (flight_number, price, whence, destination, departure_date, flight_time, free_seats)
--- VALUES ('FFF123',290.45,'KRK','HTR','2017-03-03 23:00:00','2:45',100);
---
--- INSERT INTO sb_flight (flight_number, price, whence, destination, departure_date, flight_time, free_seats)
--- VALUES ('FFF33',222.45,'KRK','HTR','2017-03-03 1:00:00','3:45',200);
+INSERT INTO sb_flight (flight_number, price, whence, destination, departure_date, departure_time, flight_time, free_seats)
+VALUES ('FFF123', 290.45, 'KRK', 'HTR', '2017-03-03', '23:00:00', '2:45', 100);
+
+INSERT INTO sb_flight (flight_number, price, whence, destination, departure_date, departure_time, flight_time, free_seats)
+VALUES ('FFF33', 222.45, 'KRK', 'HTR', '2017-03-03', '1:00:00', '3:45', 200);
+
+INSERT INTO sb_airport (airport_code, country, town_name)
+VALUES ('KRK', 'Poland', 'Balice'),
+  ('GDN', 'Poland', 'Gdansk'),
+  ('KTW', 'Poland', 'Katowice'),
+  ('WAW', 'Poland', 'Warsaw - Okecie'),
+  ('AMS', 'Netherlands', 'Amsterdam'),
+  ('BCN', 'Spain', 'Barcelona'),
+  ('TXL', 'Germany', 'Berlin'),
+  ('DTM', 'Germany', 'Dortmund');
