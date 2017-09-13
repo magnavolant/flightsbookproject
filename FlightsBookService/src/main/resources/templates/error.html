@@ -56,20 +56,20 @@
             <!-- Logo -->
             <div class="logo-page text-center">
                 <a href="" title="">
-                    <img src="images/logo-banner.png" alt="">
+                    <img src="images/logo-banner.png" th:src="@{/images/logo-banner.png}" alt="">
                 </a>
             </div>
             <!-- Logo -->
             <div class="page-body text-center">
                 <div class="item-content">
                     <div class="image-wrap">
-                        <img src="images/404.png" alt="">
+                        <img th:src="@{/images/404.png}" alt="">
                     </div>
                     <h4>We’re really sorry!</h4>
                     <p>Something went wrong trying to display the page,<br>Please try one of these instead</p>
                 </div>
                 <div class="item-footer">
-                    <a href="#" class="awe-btn awe-btn-5 arrow-right awe-btn-small text-uppercase">GO home</a>
+                    <a th:href="@{/}" class="awe-btn awe-btn-5 arrow-right awe-btn-small text-uppercase">GO home</a>
                 </div>
 
             </div>

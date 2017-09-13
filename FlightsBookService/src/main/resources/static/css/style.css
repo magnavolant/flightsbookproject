@@ -29,7 +29,7 @@
 
 
 
-/* 01. Setting 
+/* 01. Setting
  --------------------------------------------------------------------------------*/
 .georgia-italic {
   font-family: Georgia;
@@ -87,7 +87,7 @@ img {
   }
   50% {
     transform: rotate(180deg);
-  } 
+  }
   100% {
     transform: rotate(359deg);
   }
@@ -98,7 +98,7 @@ img {
   }
   50% {
     -webkit-transform: rotate(180deg);
-  } 
+  }
   100% {
     -webkit-transform: rotate(359deg);
   }
@@ -109,7 +109,7 @@ img {
   }
   50% {
     -moz-transform: rotate(180deg);
-  } 
+  }
   100% {
     -moz-transform: rotate(359deg);
   }
@@ -120,7 +120,7 @@ img {
   }
   50% {
     -o-transform: rotate(180deg);
-  } 
+  }
   100% {
     -o-transform: rotate(359deg);
   }
@@ -323,7 +323,7 @@ body.menu-active {
   background-color: rgba(255, 250, 223, 0.4);
 }
 
-/* 02. ShortCode 
+/* 02. ShortCode
  --------------------------------------------------------------------------------*/
 /*Button*/
 .awe-btn {
@@ -1707,7 +1707,7 @@ blockquote:before {
     padding-right: 10px;
   }
 }
-/* 03. Header 
+/* 03. Header
  --------------------------------------------------------------------------------*/
 .header {
   background-color: #fff;
@@ -1856,7 +1856,7 @@ blockquote:before {
   -ms-transition: all 0.5s cubic-bezier(0.16, 0.68, 0.43, 0.99);
   -o-transition: all 0.5s cubic-bezier(0.16, 0.68, 0.43, 0.99);
 }
-/* 04. Navigation 
+/* 04. Navigation
  --------------------------------------------------------------------------------*/
 .navigation {
   display: inline-block;
@@ -2265,14 +2265,14 @@ blockquote:before {
   left: 0;
   z-index: 9999999;
 }
-/* 05. Banner 
+/* 05. Banner
  --------------------------------------------------------------------------------*/
 /* Banner */
 .banner {
   padding-top: 50px;
   padding-bottom: 120px;
   position: relative;
-} 
+}
 .banner .banner-slide {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
@@ -2583,7 +2583,7 @@ blockquote:before {
 .sub-banner .logo-banner img {
   max-width: 100%;
 }
-/* 06. Home Page 
+/* 06. Home Page
  --------------------------------------------------------------------------------*/
 .home-head {
   padding-top: 84px;
@@ -3267,7 +3267,7 @@ blockquote:before {
   margin-top: 10px;
 }
 
-/* 07. Hotel Page 
+/* 07. Hotel Page
  --------------------------------------------------------------------------------*/
 .hotel-page,
 .package-page,
@@ -3798,7 +3798,7 @@ blockquote:before {
 }
 
 
-/* 08. Car Page 
+/* 08. Car Page
  --------------------------------------------------------------------------------*/
 /*List Car*/
 .top-list-car {
@@ -3899,7 +3899,7 @@ blockquote:before {
 /*End List Car*/
 
 
-/* 09. Tour 
+/* 09. Tour
  --------------------------------------------------------------------------------*/
 .tour-list-cn .cruise-item .cruise-text .cruise-name a {
   font-size: 30px;
@@ -4075,7 +4075,7 @@ blockquote:before {
   padding: 30px;
   background: url('../images/bg-border-v.png') repeat-x left top;
 }
-/* 11. Cruise Page 
+/* 11. Cruise Page
  --------------------------------------------------------------------------------*/
 .home-cruise .confidence-subscribe {
   margin-top: 0;
@@ -4341,7 +4341,7 @@ blockquote:before {
   padding: 30px;
   background: url('../images/bg-border-v.png') repeat-x left top;
 }
-/* 12. Flight Page 
+/* 12. Flight Page
  --------------------------------------------------------------------------------*/
 /*Flight Deal Item*/
 .flight-deal-item {
@@ -4920,7 +4920,7 @@ blockquote:before {
   height: 546px;
 }
 /* End Flight List */
-/* 13. Detail Page 
+/* 13. Detail Page
  --------------------------------------------------------------------------------*/
 .main-dt {
   margin-top: -150px;
@@ -6832,7 +6832,7 @@ blockquote:before {
 
 
 /*============= End Tour Detail ===========*/
-/* 14. Blog Page 
+/* 14. Blog Page
  --------------------------------------------------------------------------------*/
 .blog-content > .row {
   margin-left: 10px;
@@ -7470,7 +7470,7 @@ blockquote:before {
   margin: 0;
   line-height: 28px;
 }
-/* 15. About Page 
+/* 15. About Page
  --------------------------------------------------------------------------------*/
 .about-cn {
   padding-left: 30px;
@@ -7646,7 +7646,7 @@ blockquote:before {
   margin-right: 7px;
   margin-top: 10px;
 }
-/* 16. Contact Page 
+/* 16. Contact Page
  --------------------------------------------------------------------------------*/
 .contact-page {
   position: relative;
@@ -7711,7 +7711,7 @@ blockquote:before {
 .contact-cn .form-contact .form-field.form-field-area .field-input {
   height: 125px;
 }
-/* 17. Payment Page 
+/* 17. Payment Page
  --------------------------------------------------------------------------------*/
 .step {
   padding-left: 30px;
@@ -8059,7 +8059,7 @@ blockquote:before {
 .payment-offline .submit p {
   text-align: left;
 }
-/* 18. Cart 
+/* 18. Cart
  --------------------------------------------------------------------------------*/
 .cart-cn {
   padding: 0px 30px;
@@ -8122,7 +8122,7 @@ blockquote:before {
 .cart-cn .tb-cart .price {
   font-family: 'Lato';
   font-size: 24px;
-  color: #333333; 
+  color: #333333;
   display: block;
   text-align: center;
 }
@@ -8371,7 +8371,7 @@ blockquote:before {
   margin-bottom: 0;
   margin-top: 40px;
 }
-/* 19. Element Page 
+/* 19. Element Page
  --------------------------------------------------------------------------------*/
 .element-sc {
   background-color: #fff;
@@ -8429,7 +8429,7 @@ blockquote:before {
   margin-top: 15px;
 }
 
-/* 20. 404 
+/* 20. 404
  --------------------------------------------------------------------------------*/
 .page-not-found {
   padding-top: 50px;
@@ -8482,7 +8482,7 @@ blockquote:before {
   background-color: #59c35c;
 }
 
-/* 21. Comingsoon 
+/* 21. Comingsoon
  --------------------------------------------------------------------------------*/
 
 .countdown-wrapper {
@@ -8567,7 +8567,7 @@ blockquote:before {
   display: none;
 }
 
-/* 22. User Profile 
+/* 22. User Profile
  --------------------------------------------------------------------------------*/
 .user-profile {
   margin-right: 30px;
@@ -8820,7 +8820,7 @@ blockquote:before {
 .user-profile .check-box label:before {
   content: '';
   display: inline-block;
-  position: absolute;  
+  position: absolute;
   top: 3px;
   left:  0;
   width: 15px;
@@ -8922,7 +8922,7 @@ blockquote:before {
        -o-transform: translateX(-50%);
           transform: translateX(-50%);
 }
-/* 23. Footer 
+/* 23. Footer
  --------------------------------------------------------------------------------*/
 footer {
   background-color: #111111;
@@ -9026,7 +9026,7 @@ footer .copyright {
   margin: 45px 0 0 0;
   float: right;
 }
-/* 24. Responsive 
+/* 24. Responsive
  --------------------------------------------------------------------------------*/
 @media (max-width: 1199px) {
   /*Header*/
@@ -10956,7 +10956,7 @@ footer .copyright {
   /* User Profile */
   .user-profile {
     margin-left: 0;
-    margin-right: 0;        
+    margin-right: 0;
   }
   .user-profile .user-profile__title {
     font-size: 26px;
@@ -11516,7 +11516,7 @@ footer .copyright {
   }
   .user-review .review-item .review-header h4 span {
     display: block;
-    
+
   }
   .user-review  .review-item .review-header .btn {
     position: absolute;
@@ -11810,7 +11810,7 @@ footer .copyright {
 
 
 
-/* 25. Login Form 
+/* 25. Login Form
  --------------------------------------------------------------------------------*/
 
 .login {
