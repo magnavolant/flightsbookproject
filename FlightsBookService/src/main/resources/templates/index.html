@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml"
       layout:decorate="~{layouts/layout}">
 
 
@@ -28,9 +28,10 @@
           media="screen" />
     <link href="css/library/jquery.mb.YTPlayer.min.css" th:href="@{/css/library/jquery.mb.YTPlayer.min.css}"
           rel="stylesheet" media="screen" />
-    <!-- End Library CSS -->
-    <link href="css/style.css" th:href="@{/css/style.css}" rel="stylesheet" media="screen" />
 
+    <link href="login/animate.css/animate.min.css" th:href="@{login/animate.css/animate.min.css}"
+    <link href="login/nprogress/nprogress.css" th:href="@{login/nprogress/nprogress.css}"
+    <link href="css/style.css" th:href="@{/css/style.css}" rel="stylesheet" media="screen" />
 
 </head>
 <body>
@@ -144,6 +145,7 @@
         </div>
         <!--End Banner Slide-->
 
+
         <div class="container">
 
             <div class="logo-banner text-center">
@@ -155,6 +157,103 @@
             <!-- Banner Content -->
             <div class="banner-cn">
 
+
+
+
+
+
+         <!-- Start First Pages -->
+            <div sec:authorize="isAnonymous()">
+            <div class="login">
+            <a class="hiddenanchor" id="signup"></a>
+            <a class="hiddenanchor" id="signin"></a>
+
+
+
+            <div class="login_wrapper">
+                <div class="animate form login_form">
+                    <section class="login_content">
+                        <form>
+                            <h1>Login Form</h1>
+                            <div>
+                                <input type="text" class="form-control" placeholder="Username" required="" />
+                            </div>
+                            <div>
+                                <input type="password" class="form-control" placeholder="Password" required="" />
+                            </div>
+                            <div>
+                                <a class="btn btn-default submit" href="">Log in</a>
+                                <a class="reset_pass" href="#">Lost your password?</a>
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                            <div class="separator">
+                                <p class="change_link">New to site?
+                                    <a href="#sign" class="to_register"> Create Account </a>
+                                </p>
+
+                                <div class="clearfix"></div>
+                                <br />
+
+
+                            </div>
+                        </form>
+                    </section>
+                </div>
+
+                <div id="register" class="animate form registration_form">
+                    <section class="login_content">
+                        <form>
+                            <h1>Create Account</h1>
+                            <div>
+                                <input type="text" class="form-control" placeholder="Username" required="" />
+                            </div>
+                            <div>
+                                <input type="email" class="form-control" placeholder="Email" required="" />
+                            </div>
+                            <div>
+                                <input type="password" class="form-control" placeholder="Password" required="" />
+                            </div>
+                            <div>
+                                <a class="btn btn-default submit" href="">Submit</a>
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                            <div class="separator">
+                                <p class="change_link">Already a member ?
+                                    <a href="#signin" class="to_register"> Log in </a>
+                                </p>
+
+                                <div class="clearfix"></div>
+                                <br />
+
+
+
+                            </div>
+                        </form>
+                    </section>
+                </div>
+            </div>
+        </div>
+                <ul class="tabs-cat text-center row"></ul>
+                <ul class="tabs-cat text-center row"></ul>
+                <ul class="tabs-cat text-center row"></ul>
+                <ul class="tabs-cat text-center row"></ul>
+                <ul class="tabs-cat text-center row"></ul>
+            </div>
+
+
+                <!-- End First Pages -->
+
+
+
+
+
+
+                <!-- Start Second Pages -->
+        <div sec:authorize="isAuthenticated()">
                 <!-- Tabs Cat Form -->
                 <ul class="tabs-cat text-center row">
                     <li class="cate-item active col-xs-2">
@@ -480,30 +579,15 @@
                     </div>
                     <!-- End Search Tour -->
 
+                    <ul class="tabs-cat text-center row"></ul>
+                    <!-- End Second Pages -->
+                </div></div></div></div>
+
+
 
 
 
                 </div></div></div></section></header></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
