@@ -420,14 +420,14 @@
                             <div class="form-search clearfix">
                                 <div class="form-field field-from">
                                     <label for="flight-from"><span>Flight from:</span> Airport</label>
-                                    <input type="text" name="flightfrom" id="flight-from" class="field-input">
+                                    <input type="text" required name="flightfrom" id="flight-from" class="field-input">
                                 </div>
                                 <div class="form-field field-to">
                                     <label for="flight-to"><span>To :</span> Country, Airpor</label>
-                                    <input type="text" id="flight-to" class="field-input">
+                                    <input type="text" required id="flight-to" class="field-input">
                                 </div>
                                 <div class="form-field field-date">
-                                    <input type="text" class="field-input calendar-input" placeholder="Departing">
+                                    <input type="text" id="flight-departing" class="field-input calendar-input" placeholder="Departing">
                                 </div>
                                 <div class="form-field field-date">
                                     <input type="text" class="field-input calendar-input" placeholder="Returning">
@@ -435,8 +435,8 @@
                                 <div class="form-field field-select field-adult">
                                     <div class="select">
                                         <span>Adults</span>
-                                        <select>
-                                            <option>Adults</option>
+                                        <select required id="adults-amount">
+                                            <option disabled selected>Adults</option>
                                             <option>1</option>
                                             <option>2</option>
                                             <option>3</option>
@@ -446,8 +446,9 @@
                                 <div class="form-field field-select field-children">
                                     <div class="select">
                                         <span>Children</span>
-                                        <select>
-                                            <option>Children</option>
+                                        <select required id="children-amount">
+                                            <option disabled selected>Children</option>
+                                            <option>0</option>
                                             <option>1</option>
                                             <option>2</option>
                                             <option>3</option>
