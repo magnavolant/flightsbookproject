@@ -24,8 +24,6 @@ var isMobile = {
     }
 }
 $(document).ready(function () {
-    
-
     var WindowWidth = $(window).width();
     
     Placeholder();
