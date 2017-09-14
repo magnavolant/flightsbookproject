@@ -7,7 +7,10 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
+
+import java.util.Collections;
 
 @Component
 public class DefaultAuthenticationProvider implements AuthenticationProvider {
@@ -27,9 +30,15 @@ public class DefaultAuthenticationProvider implements AuthenticationProvider {
 
         User user = userRepository.getUserByEmail(email);
 
-        if (user != null){
-            if(user.getPassword().equals(password)) {
-                return new UsernamePasswordAuthenticationToken(email,password);
+        if (user != null) {
+            if (user.getPassword().equals(password)) {
+                if (user.getRole() == User.USER) {
+                    return new UsernamePasswordAuthenticationToken
+                            (email, password, Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER")));
+                } else if (user.getRole() == User.ADMIN) {
+                    return new UsernamePasswordAuthenticationToken
+                            (email, password, Collections.singletonList(new SimpleGrantedAuthority("ROLE_ADMIN")));
+                }
             }
         }
         return null;
@@ -39,4 +48,5 @@ public class DefaultAuthenticationProvider implements AuthenticationProvider {
     public boolean supports(Class<?> aClass) {
         return true;
     }
+
 }

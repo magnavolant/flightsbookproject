@@ -22,51 +22,20 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/index")
+                .antMatchers("/")
                 .permitAll()
                 .and()
                 .formLogin()
-                .loginPage("/login")
+                .loginPage("/")
                 .permitAll()
                 .and()
                 .logout()
                 .permitAll();
-
         http.csrf().disable();
     }
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-
-  /*      auth.inMemoryAuthentication()
-                .withUser("user").password("password").roles("USER")
-                .and()
-                .withUser("admin").password("password").roles("ADMIN");
-*/
-
-  //1) sposob - klasyczny jdbc
-//
-//        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-//        dataSource.setDriverClassName("org.postgresql.Driver");
-//        dataSource.setUrl("jdbc:postgresql://localhost:5432/postgres");
-//        dataSource.setUsername("postgres");
-//        dataSource.setPassword("admin");
-//
-//        auth.jdbcAuthentication()
-//                .dataSource(dataSource)
-//                .usersByUsernameQuery("select email, password, enabled from sb_users where email=?")
-//                .authoritiesByUsernameQuery("select username, role from sb_role where username=?");
-//
-
-        System.out.println();
-
-        //2) sposob authentication provider
         auth.authenticationProvider(authenticationProvider);
-
-
-
-
     }
-
-
 }
