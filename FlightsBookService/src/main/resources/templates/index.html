@@ -29,8 +29,10 @@
     <link href="css/library/jquery.mb.YTPlayer.min.css" th:href="@{/css/library/jquery.mb.YTPlayer.min.css}"
           rel="stylesheet" media="screen" />
 
-    <link href="login/animate.css/animate.min.css" th:href="@{login/animate.css/animate.min.css}"
-    <link href="login/nprogress/nprogress.css" th:href="@{login/nprogress/nprogress.css}"
+    <link href="login/animate.css/animate.min.css" th:href="@{/login/animate.css/animate.min.css}" rel="stylesheet"
+          media="screen" />
+    <link href="login/nprogress/nprogress.css" th:href="@{/login/nprogress/nprogress.css}" rel="stylesheet"
+          media="screen" />
     <link href="css/style.css" th:href="@{/css/style.css}" rel="stylesheet" media="screen" />
 
 </head>
@@ -118,7 +120,7 @@
                                             <a href="user-signup.html" title="">User Signup</a>
                                         </li>
                                     </ul>
-                        </div>
+                                </li></div>
                     </div>
                 </div>
             </nav>
@@ -162,84 +164,95 @@
 
 
 
-         <!-- Start First Pages -->
-            <div sec:authorize="isAnonymous()">
-            <div class="login">
-            <a class="hiddenanchor" id="signup"></a>
-            <a class="hiddenanchor" id="signin"></a>
+                <!-- Start First Pages -->
+                <div sec:authorize="isAnonymous()">
+                    <div class="login">
+                        <a class="hiddenanchor" id="signup"></a>
+                        <a class="hiddenanchor" id="signin"></a>
 
 
 
-            <div class="login_wrapper">
-                <div class="animate form login_form">
-                    <section class="login_content">
-                        <form th:action="@{/login}" method="post">
-                            <h1>Login Form</h1>
-                            <div>
-                                <input type="text" name="username" class="form-control" placeholder="Username" required="" />
+                        <div class="login_wrapper">
+                            <div class="animate form login_form">
+                                <section class="login_content">
+                                    <form th:action="@{/login}" method="post">
+                                        <h1>Login Form</h1>
+
+
+
+
+
+                                        <div>
+                                            <input type="text" name="username" class="form-control" placeholder="Username" required="" />
+                                        </div>
+                                        <div>
+                                            <input type="password" name="password" class="form-control"
+                                                   placeholder="Password" required="" />
+                                        </div>
+                                        <div>
+                                            <button type="submit" class="btn btn-default submit">Log in</button>
+                                        </div>
+
+
+
+
+
+
+                                        <div class="clearfix"></div>
+                                        <div class="separator">
+                                            <p class="change_link">New to site?
+                                                <a href="#signup" class="to_register"> Create Account </a>
+                                            </p>
+
+                                            <div class="clearfix"></div>
+                                            <br />
+
+                                        </div>
+                                    </form>
+                                </section>
                             </div>
-                            <div>
-                                <input type="password" name="password" class="form-control" placeholder="Password" required="" />
-                            </div>
-                            <div>
-                                <button type="submit" class="btn btn-default submit">Log in</button>
-                            </div>
 
-                            <div class="clearfix"></div>
-                            <div class="separator">
-                                <p class="change_link">New to site?
-                                    <a href="sign" class="to_register"> Create Account </a>
-                                </p>
+                            <div id="register" class="animate form registration_form">
+                                <section class="login_content">
+                                    <form>
+                                        <h1>Create Account</h1>
+                                        <div>
+                                            <input type="text" class="form-control" placeholder="Username" required="" />
+                                        </div>
+                                        <div>
+                                            <input type="email" class="form-control" placeholder="Email" required="" />
+                                        </div>
+                                        <div>
+                                            <input type="password" class="form-control" placeholder="Password" required="" />
+                                        </div>
+                                        <div>
+                                            <a class="btn btn-default submit" href="">Submit</a>
+                                        </div>
 
-                                <div class="clearfix"></div>
-                                <br />
+                                        <div class="clearfix"></div>
 
+                                        <div class="separator">
+                                            <p class="change_link">Already a member ?
+                                                <a href="#signin" class="to_register"> Log in </a>
+                                            </p>
+
+                                            <div class="clearfix"></div>
+                                            <br />
+
+
+
+                                        </div>
+                                    </form>
+                                </section>
                             </div>
-                        </form>
-                    </section>
+                        </div>
+                    </div>
+                    <ul class="tabs-cat text-center row"></ul>
+                    <ul class="tabs-cat text-center row"></ul>
+                    <ul class="tabs-cat text-center row"></ul>
+                    <ul class="tabs-cat text-center row"></ul>
+                    <ul class="tabs-cat text-center row"></ul>
                 </div>
-
-                <div id="register" class="animate form registration_form">
-                    <section class="login_content">
-                        <form>
-                            <h1>Create Account</h1>
-                            <div>
-                                <input type="text" class="form-control" placeholder="Username" required="" />
-                            </div>
-                            <div>
-                                <input type="email" class="form-control" placeholder="Email" required="" />
-                            </div>
-                            <div>
-                                <input type="password" class="form-control" placeholder="Password" required="" />
-                            </div>
-                            <div>
-                                <a class="btn btn-default submit" href="">Submit</a>
-                            </div>
-
-                            <div class="clearfix"></div>
-
-                            <div class="separator">
-                                <p class="change_link">Already a member ?
-                                    <a href="#signin" class="to_register"> Log in </a>
-                                </p>
-
-                                <div class="clearfix"></div>
-                                <br />
-
-
-
-                            </div>
-                        </form>
-                    </section>
-                </div>
-            </div>
-        </div>
-                <ul class="tabs-cat text-center row"></ul>
-                <ul class="tabs-cat text-center row"></ul>
-                <ul class="tabs-cat text-center row"></ul>
-                <ul class="tabs-cat text-center row"></ul>
-                <ul class="tabs-cat text-center row"></ul>
-            </div>
 
 
                 <!-- End First Pages -->
@@ -250,342 +263,338 @@
 
 
                 <!-- Start Second Pages -->
-        <div sec:authorize="isAuthenticated()">
-                <!-- Tabs Cat Form -->
-                <ul class="tabs-cat text-center row">
-                    <li class="cate-item active col-xs-2">
-                        <a data-toggle="tab" href="#form-flight" title="">
-                            <span>flight</span>
-                            <img src="images/icon-flight.png" alt="">
-                        </a>
-                    </li>
-                    <li class="cate-item col-xs-2">
-                        <a data-toggle="tab" href="#form-hotel" title=""><span>Hotel</span><img src="images/icon-hotel.png" alt=""></a>
-                    </li>
-                    <li class="cate-item col-xs-2">
-                        <a data-toggle="tab" href="#form-car" title=""><span>Car</span><img src="images/icon-car.png" alt=""></a>
-                    </li>
-                    <li class="cate-item col-xs-2">
-                        <a data-toggle="tab" href="#form-package" title=""><span>package deals</span><img src="images/icon-tour.png" alt=""></a>
-                    </li>
-                    <li class="cate-item col-xs-2">
-                        <a data-toggle="tab" href="#form-cruise" title=""><span>cruise</span><img src="images/icon-cruise.png" alt=""></a>
-                    </li>
-                    <li class="cate-item col-xs-2">
-                        <a data-toggle="tab" href="#form-tour" title=""><span>TOUR</span><img src="images/icon-vacation.png" alt=""></a>
-                    </li>
-                </ul>
-                <!-- End Tabs Cat -->
+                <div sec:authorize="isAuthenticated()">
+                    <!-- Tabs Cat Form -->
+                    <ul class="tabs-cat text-center row">
+                        <li class="cate-item active col-xs-2">
+                            <a data-toggle="tab" href="#form-flight" title="">
+                                <span>flight</span>
+                                <img src="images/icon-flight.png" alt="">
+                            </a>
+                        </li>
+                        <li class="cate-item col-xs-2">
+                            <a data-toggle="tab" href="#form-hotel" title=""><span>Hotel</span><img src="images/icon-hotel.png" alt=""></a>
+                        </li>
+                        <li class="cate-item col-xs-2">
+                            <a data-toggle="tab" href="#form-car" title=""><span>Car</span><img src="images/icon-car.png" alt=""></a>
+                        </li>
+                        <li class="cate-item col-xs-2">
+                            <a data-toggle="tab" href="#form-package" title=""><span>package deals</span><img src="images/icon-tour.png" alt=""></a>
+                        </li>
+                        <li class="cate-item col-xs-2">
+                            <a data-toggle="tab" href="#form-cruise" title=""><span>cruise</span><img src="images/icon-cruise.png" alt=""></a>
+                        </li>
+                        <li class="cate-item col-xs-2">
+                            <a data-toggle="tab" href="#form-tour" title=""><span>TOUR</span><img src="images/icon-vacation.png" alt=""></a>
+                        </li>
+                    </ul>
+                    <!-- End Tabs Cat -->
 
-                <!-- Tabs Content -->
-                <div class="tab-content">
+                    <!-- Tabs Content -->
+                    <div class="tab-content">
 
-                    <!-- Search Hotel -->
-                    <div class="form-cn form-hotel tab-pane active in" id="form-hotel">
-                        <h2>Where would you like to go?</h2>
-                        <div class="form-search clearfix">
-                            <div class="form-field field-destination">
-                                <label for="destination"><span>Destination:</span> Country, City, Airport, Area, Landmark</label>
-                                <input type="text" id="destination" class="field-input">
-                            </div>
-                            <div class="form-field field-date">
-                                <input type="text" class="field-input calendar-input" placeholder="Check in">
-                            </div>
-                            <div class="form-field field-date">
-                                <input type="text" class="field-input calendar-input" placeholder="Check out">
-                            </div>
-                            <div class="form-field field-select">
-                                <div class="select">
-                                    <span>Guest</span>
-                                    <select>
-                                        <option>Guest</option>
-                                        <option>1 Guest</option>
-                                        <option>2 Guest</option>
-                                        <option>3 Guest</option>
-                                    </select>
+                        <!-- Search Hotel -->
+                        <div class="form-cn form-hotel tab-pane active in" id="form-hotel">
+                            <h2>Where would you like to go?</h2>
+                            <div class="form-search clearfix">
+                                <div class="form-field field-destination">
+                                    <label for="destination"><span>Destination:</span> Country, City, Airport, Area, Landmark</label>
+                                    <input type="text" id="destination" class="field-input">
                                 </div>
-                            </div>
-                            <div class="form-submit">
-                                <button type="submit" class="awe-btn awe-btn-lager awe-search">Search</button>
+                                <div class="form-field field-date">
+                                    <input type="text" class="field-input calendar-input" placeholder="Check in">
+                                </div>
+                                <div class="form-field field-date">
+                                    <input type="text" class="field-input calendar-input" placeholder="Check out">
+                                </div>
+                                <div class="form-field field-select">
+                                    <div class="select">
+                                        <span>Guest</span>
+                                        <select>
+                                            <option>Guest</option>
+                                            <option>1 Guest</option>
+                                            <option>2 Guest</option>
+                                            <option>3 Guest</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-submit">
+                                    <button type="submit" class="awe-btn awe-btn-lager awe-search">Search</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- End Search Hotel -->
+                        <!-- End Search Hotel -->
 
-                    <!-- Search Car -->
-                    <div class="form-cn form-car tab-pane" id="form-car">
-                        <h2>Where would you like to go?</h2>
-                        <div class="form-search clearfix">
-                            <div class="form-field field-picking">
-                                <label for="picking"><span>Picking up:</span> City, airport...</label>
-                                <input type="text" id="picking" class="field-input">
-                            </div>
-                            <div class="form-field field-droping">
-                                <input type="text" class="field-input" placeholder="Droping off">
-                            </div>
-                            <div class="form-field field-date">
-                                <input type="text" class="field-input calendar-input" placeholder="Pink up date">
-                            </div>
-                            <div class="form-field field-date">
-                                <input type="text" class="field-input calendar-input" placeholder="Drop off date">
-                            </div>
-                            <div class="form-submit">
-                                <button type="submit" class="awe-btn awe-btn-lager awe-search">Search</button>
+                        <!-- Search Car -->
+                        <div class="form-cn form-car tab-pane" id="form-car">
+                            <h2>Where would you like to go?</h2>
+                            <div class="form-search clearfix">
+                                <div class="form-field field-picking">
+                                    <label for="picking"><span>Picking up:</span> City, airport...</label>
+                                    <input type="text" id="picking" class="field-input">
+                                </div>
+                                <div class="form-field field-droping">
+                                    <input type="text" class="field-input" placeholder="Droping off">
+                                </div>
+                                <div class="form-field field-date">
+                                    <input type="text" class="field-input calendar-input" placeholder="Pink up date">
+                                </div>
+                                <div class="form-field field-date">
+                                    <input type="text" class="field-input calendar-input" placeholder="Drop off date">
+                                </div>
+                                <div class="form-submit">
+                                    <button type="submit" class="awe-btn awe-btn-lager awe-search">Search</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- End Search Car -->
+                        <!-- End Search Car -->
 
-                    <!-- Search Cruise-->
-                    <div class="form-cn form-cruise tab-pane" id="form-cruise">
-                        <h2>Where would you like to go?</h2>
-                        <ul class="form-radio">
-                            <li>
-                                <div class="radio-checkbox">
-                                    <input type="radio" name="radio-2" id="radio-5" class="radio">
-                                    <label for="radio-5">Popular Cruises</label>
+                        <!-- Search Cruise-->
+                        <div class="form-cn form-cruise tab-pane" id="form-cruise">
+                            <h2>Where would you like to go?</h2>
+                            <ul class="form-radio">
+                                <li>
+                                    <div class="radio-checkbox">
+                                        <input type="radio" name="radio-2" id="radio-5" class="radio">
+                                        <label for="radio-5">Popular Cruises</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="radio-checkbox">
+                                        <input type="radio" name="radio-2" id="radio-6" class="radio">
+                                        <label for="radio-6">Luxury Cruises</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="radio-checkbox">
+                                        <input type="radio" name="radio-2" id="radio-7" class="radio">
+                                        <label for="radio-7">River Cruises</label>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="form-search clearfix">
+                                <div class="form-field field-destination">
+                                    <label for="destination2"><span>Destination:</span> Asia...</label>
+                                    <input type="text" id="destination2" class="field-input">
                                 </div>
-                            </li>
-                            <li>
-                                <div class="radio-checkbox">
-                                    <input type="radio" name="radio-2" id="radio-6" class="radio">
-                                    <label for="radio-6">Luxury Cruises</label>
+                                <div class="form-field field-select field-lenght">
+                                    <div class="select">
+                                        <span>Length of Cruise</span>
+                                        <select>
+                                            <option>Length of Cruise</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </li>
-                            <li>
-                                <div class="radio-checkbox">
-                                    <input type="radio" name="radio-2" id="radio-7" class="radio">
-                                    <label for="radio-7">River Cruises</label>
+                                <div class="form-field field-select field-month">
+                                    <div class="select">
+                                        <span>Month</span>
+                                        <select>
+                                            <option>Month</option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </li>
-                        </ul>
-                        <div class="form-search clearfix">
-                            <div class="form-field field-destination">
-                                <label for="destination2"><span>Destination:</span> Asia...</label>
-                                <input type="text" id="destination2" class="field-input">
-                            </div>
-                            <div class="form-field field-select field-lenght">
-                                <div class="select">
-                                    <span>Length of Cruise</span>
-                                    <select>
-                                        <option>Length of Cruise</option>
-                                    </select>
+                                <div class="form-field field-select field-port">
+                                    <div class="select">
+                                        <span>Cruise Departure Port</span>
+                                        <select>
+                                            <option>Cruise Departure Port</option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-field field-select field-month">
-                                <div class="select">
-                                    <span>Month</span>
-                                    <select>
-                                        <option>Month</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                    </select>
+                                <div class="form-field field-select field-line">
+                                    <div class="select">
+                                        <span>Cruise Line</span>
+                                        <select>
+                                            <option>Cruise Line</option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-field field-select field-port">
-                                <div class="select">
-                                    <span>Cruise Departure Port</span>
-                                    <select>
-                                        <option>Cruise Departure Port</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                    </select>
+                                <div class="form-submit">
+                                    <button type="submit" class="awe-btn awe-btn-medium awe-search">Search</button>
                                 </div>
-                            </div>
-                            <div class="form-field field-select field-line">
-                                <div class="select">
-                                    <span>Cruise Line</span>
-                                    <select>
-                                        <option>Cruise Line</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-submit">
-                                <button type="submit" class="awe-btn awe-btn-medium awe-search">Search</button>
                             </div>
                         </div>
-                    </div>
-                    <!-- End Search Cruise -->
+                        <!-- End Search Cruise -->
 
-                    <!-- Search Flight-->
-                    <div class="form-cn form-flight tab-pane" id="form-flight">
-                        <h2>Where would you like to go?</h2>
-                        <div class="form-search clearfix">
-                            <div class="form-field field-from">
-                                <label for="flight-from"><span>Flight from:</span> Airport</label>
-                                <input type="text" name="flightfrom" id="flight-from" class="field-input">
-                            </div>
-                            <div class="form-field field-to">
-                                <label for="flight-to"><span>To :</span> Country, Airpor</label>
-                                <input type="text" id="flight-to" class="field-input">
-                            </div>
-                            <div class="form-field field-date">
-                                <input type="text" class="field-input calendar-input" placeholder="Departing">
-                            </div>
-                            <div class="form-field field-date">
-                                <input type="text" class="field-input calendar-input" placeholder="Returning">
-                            </div>
-                            <div class="form-field field-select field-adult">
-                                <div class="select">
-                                    <span>Adults</span>
-                                    <select>
-                                        <option>Adults</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                    </select>
+                        <!-- Search Flight-->
+                        <div class="form-cn form-flight tab-pane" id="form-flight">
+                            <h2>Where would you like to go?</h2>
+                            <div class="form-search clearfix">
+                                <div class="form-field field-from">
+                                    <label for="flight-from"><span>Flight from:</span> Airport</label>
+                                    <input type="text" name="flightfrom" id="flight-from" class="field-input">
                                 </div>
-                            </div>
-                            <div class="form-field field-select field-children">
-                                <div class="select">
-                                    <span>Children</span>
-                                    <select>
-                                        <option>Children</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                    </select>
+                                <div class="form-field field-to">
+                                    <label for="flight-to"><span>To :</span> Country, Airpor</label>
+                                    <input type="text" id="flight-to" class="field-input">
                                 </div>
-                            </div>
-                            <div class="form-submit">
-                                <button type="submit" class="awe-btn awe-btn-medium awe-search">Search</button>
+                                <div class="form-field field-date">
+                                    <input type="text" class="field-input calendar-input" placeholder="Departing">
+                                </div>
+                                <div class="form-field field-date">
+                                    <input type="text" class="field-input calendar-input" placeholder="Returning">
+                                </div>
+                                <div class="form-field field-select field-adult">
+                                    <div class="select">
+                                        <span>Adults</span>
+                                        <select>
+                                            <option>Adults</option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-field field-select field-children">
+                                    <div class="select">
+                                        <span>Children</span>
+                                        <select>
+                                            <option>Children</option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-submit">
+                                    <button type="submit" class="awe-btn awe-btn-medium awe-search">Search</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- End Search Flight -->
+                        <!-- End Search Flight -->
 
-                    <!-- Search Package -->
-                    <div class="form-cn form-package tab-pane" id="form-package">
-                        <h2>Where would you like to go?</h2>
-                        <ul class="form-radio">
-                            <li>
-                                <div class="radio-checkbox">
-                                    <input type="radio" name="radio-1" id="radio-1" class="radio">
-                                    <label for="radio-1">Flight + Hotel</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="radio-checkbox">
-                                    <input type="radio" name="radio-1" id="radio-2" class="radio">
-                                    <label for="radio-2">Flight + Hotel +Car</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="radio-checkbox">
-                                    <input type="radio" name="radio-1" id="radio-3" class="radio">
-                                    <label for="radio-3">Hotel +Car</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="radio-checkbox">
-                                    <input type="radio" name="radio-1" id="radio-4" class="radio">
-                                    <label for="radio-4">Flight +Car</label>
-                                </div>
-                            </li>
+                        <!-- Search Package -->
+                        <div class="form-cn form-package tab-pane" id="form-package">
+                            <h2>Where would you like to go?</h2>
+                            <ul class="form-radio">
+                                <li>
+                                    <div class="radio-checkbox">
+                                        <input type="radio" name="radio-1" id="radio-1" class="radio">
+                                        <label for="radio-1">Flight + Hotel</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="radio-checkbox">
+                                        <input type="radio" name="radio-1" id="radio-2" class="radio">
+                                        <label for="radio-2">Flight + Hotel +Car</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="radio-checkbox">
+                                        <input type="radio" name="radio-1" id="radio-3" class="radio">
+                                        <label for="radio-3">Hotel +Car</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="radio-checkbox">
+                                        <input type="radio" name="radio-1" id="radio-4" class="radio">
+                                        <label for="radio-4">Flight +Car</label>
+                                    </div>
+                                </li>
 
-                        </ul>
-                        <div class="form-search clearfix">
-                            <div class="form-field field-from">
-                                <label for="filghtfrom"><span>Flight From:</span> Airport...</label>
-                                <input type="text" id="filghtfrom" class="field-input">
-                            </div>
-                            <div class="form-field field-to">
-                                <label for="flightto"><span>To:</span> Country, Airport</label>
-                                <input type="text" id="flightto" class="field-input">
-                            </div>
-                            <div class="form-field field-date">
-                                <input type="text" class="field-input calendar-input" placeholder="Departing">
-                            </div>
-                            <div class="form-field field-date">
-                                <input type="text" class="field-input calendar-input" placeholder="Returning">
-                            </div>
-                            <div class="form-field field-select field-adults">
-                                <div class="select">
-                                    <span>Adults</span>
-                                    <select>
-                                        <option>Adults</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                    </select>
+                            </ul>
+                            <div class="form-search clearfix">
+                                <div class="form-field field-from">
+                                    <label for="filghtfrom"><span>Flight From:</span> Airport...</label>
+                                    <input type="text" id="filghtfrom" class="field-input">
                                 </div>
-                            </div>
-                            <div class="form-field field-select field-children">
-                                <div class="select">
-                                    <span>Children</span>
-                                    <select>
-                                        <option>Children</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                    </select>
+                                <div class="form-field field-to">
+                                    <label for="flightto"><span>To:</span> Country, Airport</label>
+                                    <input type="text" id="flightto" class="field-input">
                                 </div>
-                            </div>
-                            <div class="form-submit">
-                                <button type="submit" class="awe-btn awe-btn-medium awe-search">Search</button>
+                                <div class="form-field field-date">
+                                    <input type="text" class="field-input calendar-input" placeholder="Departing">
+                                </div>
+                                <div class="form-field field-date">
+                                    <input type="text" class="field-input calendar-input" placeholder="Returning">
+                                </div>
+                                <div class="form-field field-select field-adults">
+                                    <div class="select">
+                                        <span>Adults</span>
+                                        <select>
+                                            <option>Adults</option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-field field-select field-children">
+                                    <div class="select">
+                                        <span>Children</span>
+                                        <select>
+                                            <option>Children</option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-submit">
+                                    <button type="submit" class="awe-btn awe-btn-medium awe-search">Search</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- End Search Package -->
+                        <!-- End Search Package -->
 
-                    <!-- Search Tour-->
-                    <div class="form-cn form-tour tab-pane" id="form-tour">
-                        <h2>Where would you like to go?</h2>
-                        <div class="form-search clearfix">
-                            <div class="form-field field-select field-region">
-                                <div class="select">
-                                    <span>Region: <small>Wourldwide, africa..</small></span>
-                                    <select>
-                                        <option>Africa</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                    </select>
+                        <!-- Search Tour-->
+                        <div class="form-cn form-tour tab-pane" id="form-tour">
+                            <h2>Where would you like to go?</h2>
+                            <div class="form-search clearfix">
+                                <div class="form-field field-select field-region">
+                                    <div class="select">
+                                        <span>Region: <small>Wourldwide, africa..</small></span>
+                                        <select>
+                                            <option>Africa</option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-field field-select field-country">
-                                <div class="select">
-                                    <span>Country</span>
-                                    <select>
-                                        <option>Country</option>
-                                        <option>Viet Nam</option>
-                                        <option>Thai Lan</option>
-                                    </select>
+                                <div class="form-field field-select field-country">
+                                    <div class="select">
+                                        <span>Country</span>
+                                        <select>
+                                            <option>Country</option>
+                                            <option>Viet Nam</option>
+                                            <option>Thai Lan</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-field field-select field-style">
-                                <div class="select">
-                                    <span>Tour Style</span>
-                                    <select>
-                                        <option>Style One</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                    </select>
+                                <div class="form-field field-select field-style">
+                                    <div class="select">
+                                        <span>Tour Style</span>
+                                        <select>
+                                            <option>Style One</option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-submit">
-                                <button type="submit" class="awe-btn awe-btn-medium awe-search">Search</button>
+                                <div class="form-submit">
+                                    <button type="submit" class="awe-btn awe-btn-medium awe-search">Search</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- End Search Tour -->
+                        <!-- End Search Tour -->
 
-                    <ul class="tabs-cat text-center row"></ul>
-                    <!-- End Second Pages -->
-                </div></div></div></div>
-
+                        <ul class="tabs-cat text-center row"></ul>
+                        <!-- End Second Pages -->
+                    </div></div></div></div>
 
 
-
-
-                </div></div></div></section></header></div>
-
+</div></div></div></section></header></div>
 
 
 
