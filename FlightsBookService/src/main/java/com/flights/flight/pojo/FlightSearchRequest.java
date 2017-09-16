@@ -7,6 +7,7 @@ public class FlightSearchRequest {
     private String whenceAirportCode;
     private String destinationAirportCode;
     private LocalDate departureDate;
+    private LocalDate arrivalDate;
     private int peopleAmount;
 
     public FlightSearchRequest() {
@@ -33,7 +34,19 @@ public class FlightSearchRequest {
     }
 
     public void setDepartureDate(String departureDate) {
-        this.departureDate = LocalDate.parse(departureDate);
+        if (departureDate != null) {
+            this.departureDate = LocalDate.parse(departureDate);
+        } else this.departureDate = null;
+    }
+
+    public void setArrivalDate(String arrivalDate) {
+        if (arrivalDate != null) {
+            this.arrivalDate = LocalDate.parse(arrivalDate);
+        } else this.arrivalDate = null;
+    }
+
+    public LocalDate getArrivalDate() {
+        return arrivalDate;
     }
 
     public int getPeopleAmount() {

@@ -41,29 +41,24 @@ public class FlightService {
         }
     }
 
-    public ResponseEntity<List<Flight>> getFlights(FlightSearchRequest request) {
+    public ResponseEntity<?> getFlights(FlightSearchRequest request) {
 
-        List<Flight> flights = flightRepository.getFlights(
-                request.getWhenceAirportCode(),
-                request.getDestinationAirportCode(),
-                request.getDepartureDate(),
-                request.getPeopleAmount()
-        );
+        boolean isTwoWaysFlight = request.getArrivalDate() != null;
 
-        if(!flights.isEmpty()){
-            return new ResponseEntity<>(flights, HttpStatus.OK);
-        }else{
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if (isTwoWaysFlight) {
+            return getBothWaysFlightsResponse(request);
+        } else {
+            return getSingleWayFlightsResponse(request);
         }
     }
 
-    public ResponseEntity<List<Airport>> getAirports(String request){
+    public ResponseEntity<List<Airport>> getAirports(String request) {
 
         List<Airport> airports = flightRepository.getAirports(request);
 
-        if(!airports.isEmpty()){
+        if (!airports.isEmpty()) {
             return new ResponseEntity<>(airports, HttpStatus.OK);
-        }else {
+        } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
@@ -76,4 +71,40 @@ public class FlightService {
         return flightRepository.getFlightByNumber(flightNumber);
     }
 
+    private ResponseEntity<?> getSingleWayFlightsResponse(FlightSearchRequest request) {
+        List<Flight> flights = flightRepository.getFlights(
+                request.getWhenceAirportCode(),
+                request.getDestinationAirportCode(),
+                request.getDepartureDate(),
+                request.getPeopleAmount()
+        );
+        if (!flights.isEmpty()) {
+            return ResponseEntity.ok(flights);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    private ResponseEntity<?> getBothWaysFlightsResponse(FlightSearchRequest request) {
+
+        List<Flight> destinationFlights = flightRepository.getFlights(
+                request.getWhenceAirportCode(),
+                request.getDestinationAirportCode(),
+                request.getDepartureDate(),
+                request.getPeopleAmount()
+        );
+
+        List<Flight> returningFlights = flightRepository.getFlights(
+                request.getDestinationAirportCode(),
+                request.getWhenceAirportCode(),
+                request.getArrivalDate(),
+                request.getPeopleAmount()
+        );
+        if (!destinationFlights.isEmpty() && !returningFlights.isEmpty()) {
+            BothWaysFlight bothWaysFlight = new BothWaysFlight(destinationFlights, returningFlights);
+            return ResponseEntity.ok(bothWaysFlight);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

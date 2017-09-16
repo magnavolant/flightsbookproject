@@ -12062,3 +12062,12 @@ ul.verticle_bars li {
     background-color: rgba(52, 73, 94, 0.88);
     border-color: rgba(52, 73, 94, 0.88)
 }
+
+#flight-not-found-alert{
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+#flight-found-alert{
+  margin-top: 10px;
+  margin-bottom: 0;
+}

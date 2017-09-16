@@ -63,7 +63,7 @@
 
             <!-- Logo -->
             <div class="logo float-left">
-                <a href="index.html" title=""><img src="images/logo-header.png" alt=""></a>
+                <a href="/" title=""><img src="images/logo-header.png" alt=""></a>
             </div>
             <!-- End Logo -->
             <!-- Bars -->
@@ -407,9 +407,6 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-submit">
-                                    <button type="submit" class="awe-btn awe-btn-medium awe-search">Search</button>
-                                </div>
                             </div>
                         </div>
                         <!-- End Search Cruise -->
@@ -420,17 +417,19 @@
                             <div class="form-search clearfix">
                                 <div class="form-field field-from">
                                     <label for="flight-from"><span>Flight from:</span> Airport</label>
-                                    <input type="text" required name="flightfrom" id="flight-from" class="field-input">
+                                    <input type="text" name="flightfrom" id="flight-from" class="field-input" required/>
                                 </div>
                                 <div class="form-field field-to">
                                     <label for="flight-to"><span>To :</span> Country, Airpor</label>
-                                    <input type="text" required id="flight-to" class="field-input">
+                                    <input type="text" required id="flight-to" class="field-input"/>
                                 </div>
                                 <div class="form-field field-date">
-                                    <input type="text" id="flight-departing" class="field-input calendar-input" placeholder="Departing">
+                                    <input type="text" required id="flight-departing" class="field-input calendar-input"
+                                           placeholder="Departing"/>
                                 </div>
                                 <div class="form-field field-date">
-                                    <input type="text" class="field-input calendar-input" placeholder="Returning">
+                                    <input type="text" id="flight-returning" class="field-input calendar-input"
+                                           placeholder="Returning"/>
                                 </div>
                                 <div class="form-field field-select field-adult">
                                     <div class="select">
@@ -460,6 +459,12 @@
                                         Search
                                     </button>
                                 </div>
+                            </div>
+                            <div class="alert alert-danger" id="flight-not-found-alert" role="alert" hidden="hidden">
+                                Flights not found, try different input.
+                            </div>
+                            <div class="alert alert-success" id="flight-found-alert" role="alert" hidden="hidden">
+                                Flights found redirecting...
                             </div>
                         </div>
                         <!-- End Search Flight -->

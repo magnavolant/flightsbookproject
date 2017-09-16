@@ -1,21 +1,18 @@
 $(document).ready(function () {
-
-
     $("#search-btn").click(function (event) {
         event.preventDefault();
         //TODO NOW ITS SENDING INPUT SHOULD CONVERT TO AIRPORT CODE
 
-        //Date picker widget is bugged so we are adding one day to each picked date
-        var date = $("#flight-departing").datepicker("getDate");
-        date.setDate(date.getDate() + 1);
-
         var formData = {
-            whenceAirportCode: $("#flight-from").val(),
-            destinationAirportCode: $("#flight-to").val(),
-            departureDate: date.toISOString().slice(0,10),
-            peopleAmount: Number($("#adults-amount").find("option:selected").text()) +
-            Number($("#children-amount").find("option:selected").text())
-        };
+                whenceAirportCode: $("#flight-from").val(),
+                destinationAirportCode: $("#flight-to").val(),
+                departureDate: getDateAsString($("#flight-departing").datepicker("getDate")),
+                arrivalDate: getDateAsString($("#flight-returning").datepicker("getDate")),
+                peopleAmount:
+                Number($("#adults-amount").find("option:selected").text()) +
+                Number($("#children-amount").find("option:selected").text())
+            }
+        ;
         console.log(JSON.stringify(formData));
         postData(formData)
     });
@@ -27,11 +24,32 @@ $(document).ready(function () {
             data: JSON.stringify(data),
             contentType: "application/json",
             success: function (data, status, jqXHR) {
-                console.log(JSON.stringify(data));
-                console.log(status);
-                console.log(jqXHR);
-                window.location.href = "http://stackoverflow.com"
+                $("#flight-found-alert").fadeIn(500);
+                localStorage.setItem("data", JSON.stringify(data));
+                setTimeout(function () {
+                    $("#flight-found-alert").fadeOut(500);
+                    window.location.href = "/testflightspage";
+                }, 1500);
+            },
+            error: function (xhr) {
+                if (xhr.status === 404) {
+                    $("#flight-not-found-alert").fadeIn(500);
+                    setTimeout(function () {
+                        $("#flight-not-found-alert").fadeOut(500);
+                    }, 4000);
+                }
+
             }
         });
     }
 });
+
+function getDateAsString(date) {
+    if (date !== null) {
+        //Date picker widget is bugged so we are adding one day to each picked date
+        date.setDate(date.getDate() + 1);
+        return date.toISOString().slice(0, 10);
+    } else {
+        return null;
+    }
+}

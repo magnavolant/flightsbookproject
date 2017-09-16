@@ -27,7 +27,7 @@ public class FlightController {
     }
 
     @RequestMapping(value = "/getflights", method = RequestMethod.POST)
-    public ResponseEntity<List<Flight>> getFlights(@RequestBody FlightSearchRequest flightSearchRequest) {
+    public ResponseEntity<?> getFlights(@RequestBody FlightSearchRequest flightSearchRequest) {
         return flightService.getFlights(flightSearchRequest);
     }
 
