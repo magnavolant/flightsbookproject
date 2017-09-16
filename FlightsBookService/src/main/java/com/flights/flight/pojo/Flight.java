@@ -28,7 +28,7 @@ public class Flight{
     private LocalDate departureDate;
 
     @Column(name = "departure_time")
-    private LocalTime localTime;
+    private LocalTime departureTime;
 
     @Column(name = "flight_time")
     private LocalTime flightTime;
@@ -42,12 +42,12 @@ public class Flight{
 
     public Flight(){}
 
-    public Flight(String flightNumber, String destination, String whence, LocalDate departureDate, LocalTime localTime, LocalTime flightTime, BigDecimal price, int freeSeatsNumber) {
+    public Flight(String flightNumber, String destination, String whence, LocalDate departureDate, LocalTime departureTime, LocalTime flightTime, BigDecimal price, int freeSeatsNumber) {
         this.flightNumber = flightNumber;
         this.destination = destination;
         this.whence = whence;
         this.departureDate = departureDate;
-        this.localTime = localTime;
+        this.departureTime = departureTime;
         this.flightTime = flightTime;
         this.price = price;
         this.freeSeatsNumber = freeSeatsNumber;
@@ -61,12 +61,12 @@ public class Flight{
         this.id = id;
     }
 
-    public LocalTime getLocalTime() {
-        return localTime;
+    public LocalTime getDepartureTime() {
+        return departureTime;
     }
 
-    public void setLocalTime(LocalTime localTime) {
-        this.localTime = localTime;
+    public void setDepartureTime(LocalTime departureTime) {
+        this.departureTime = departureTime;
     }
 
     public LocalTime getFlightTime() {

@@ -13,7 +13,6 @@ $(document).ready(function () {
                 Number($("#children-amount").find("option:selected").text())
             }
         ;
-        console.log(JSON.stringify(formData));
         postData(formData)
     });
 
