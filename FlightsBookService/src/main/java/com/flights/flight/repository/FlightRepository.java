@@ -19,6 +19,7 @@ public interface FlightRepository extends CrudRepository<Flight, Integer> {
             "AND F.departureDate = ?3 AND F.freeSeatsNumber >= ?4")
     List<Flight> getFlights(String departureAirport, String arrivalAirport, LocalDate departureDate, int peopleAmount);
 
-    @Query("SELECT A FROM Airport A WHERE A.country LIKE :request% OR A.town LIKE :request%")
+    @Query("SELECT A FROM Airport A WHERE A.country LIKE :request% OR A.town LIKE :request% " +
+            "OR A.airportCode LIKE :request%")
     List<Airport> getAirports(@Param("request") String request);
 }
