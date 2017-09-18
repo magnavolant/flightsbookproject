@@ -78,25 +78,17 @@
                         <div class="tb-cell">
                             <ul class="menu-list text-uppercase">
                                 <li class="current-menu-parent">
-                                    <a href="index.html" title="">Home</a>
+                                    <a th:href="@{/}" title="">Home</a>
 
                                 </li>
                                 <li>
-                                    <a href="/about">About us</a>
+                                    <a th:href="@{/about}" title="">About us</a>
                                 </li>
                                 <li>
                                     <a href="#" title="">Hotel</a>
                                 </li>
-                                <li>
-                                    <a href="#" title="">Flights</a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="home-flight.html" title="">Flights</a>
-                                        </li>
-                                        <li>
-                                            <a href="flight-list.html">Flight List</a>
-                                        </li>
-                                    </ul>
+                                <li sec:authorize="isAuthenticated()">
+                                    <a th:href="@{/flights}" title="">Flights</a>
                                 </li>
                                 <li>
                                     <a href="#" title="">Car</a>

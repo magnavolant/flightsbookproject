@@ -15,7 +15,7 @@
 <html lang="en"/> <!--<![endif]-->
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>SkyBooking</title>
+    <title>SkyBooking - About us</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <meta name="format-detection" content="telephone=no"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
@@ -77,26 +77,18 @@
                     <div class="tb">
                         <div class="tb-cell">
                             <ul class="menu-list text-uppercase">
-                                <li class="current-menu-parent">
-                                    <a href="index.html" title="">Home</a>
+                                <li>
+                                    <a th:href="@{/}" title="">Home</a>
 
                                 </li>
-                                <li>
-                                    <a href="/about">About us</a>
+                                <li class="current-menu-parent">
+                                    <a th:href="@{/about}" title="">About us</a>
                                 </li>
                                 <li>
                                     <a href="#" title="">Hotel</a>
                                 </li>
-                                <li>
-                                    <a href="#" title="">Flights</a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="home-flight.html" title="">Flights</a>
-                                        </li>
-                                        <li>
-                                            <a href="flight-list.html">Flight List</a>
-                                        </li>
-                                    </ul>
+                                <li sec:authorize="isAuthenticated()">
+                                    <a th:href="@{/flights}" title="">Flights</a>
                                 </li>
                                 <li>
                                     <a href="#" title="">Car</a>
@@ -153,7 +145,7 @@
                 <!-- Breakcrumb -->
                 <section class="breakcrumb-sc">
                     <ul class="breadcrumb arrow">
-                        <li><a href="index.html"><i class="fa fa-home"></i></a></li>
+                        <li><a href="/"><i class="fa fa-home"></i></a></li>
                         <li>About us</li>
                     </ul>
                 </section>
@@ -172,7 +164,9 @@
                                 Each of us is unique in its own kind of way, and we believe that we can create something really amazing.
                             </p>
                             <p>
-                                Each of us is unique in its own kind of way, and we believe that we can create something really amazing. We have a lot of experience in the fields such as: programming, graphics design, creating webpages. We are open minded and open to new ideas, but what’s even more important we are not afraid of new challenges.
+                               We have a little of experience in the fields such as: programming, graphics design,
+                                creating webpages.<br>
+                                We are open minded and open to new ideas, but what’s even more important we are not afraid of new challenges.
                             </p>
                         </div>
                     </div>
@@ -208,7 +202,7 @@
                                 <img src="images/team/img-3.jpg" alt="">
                             </figure>
                             <h3>Dominik</h3>
-                            <span>Junior Java Developer with Front-end technologies knowledge</span>
+                            <span>Junior Java Developer with Front-end</span>
                         </div>
                         <!-- End Team Item -->
 
