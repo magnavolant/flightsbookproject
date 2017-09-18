@@ -16,4 +16,9 @@ public class ViewController {
     public String flightsPage(){
         return "testflightspage";
     }
+
+    @RequestMapping(value = "/about", method = RequestMethod.GET)
+    public String aboutPage(){
+        return "about";
+    }
 }
