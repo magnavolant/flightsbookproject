@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layouts/layout}">
+
+
+<!--[if IE 7 ]>
+<html class="ie ie7"/> <![endif]-->
+<!--[if IE 8 ]>
+<html class="ie ie8"/> <![endif]-->
+<!--[if IE 9 ]>
+<html class="ie ie9"/> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="en"/> <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>SkyBooking - Flights</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- Font Google -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400%7COpen+Sans:300,400,600'
+          th:href="@{http://fonts.googleapis.com/css?family=Lato:300,400%7COpen+Sans:300,400,600}" rel="stylesheet"
+          type='text/css'/>
+    <!-- /Font Google -->
+    <link href="css/library/font-awesome.min.css" th:href="@{/css/library/font-awesome.min.css}"
+          rel="stylesheet"
+          media="screen"/>
+    <link href="css/library/bootstrap.min.css" th:href="@{/css/library/bootstrap.min.css}" rel="stylesheet"
+          media="screen"/>
+    <link href="css/library/jquery-ui.min.css" th:href="@{/css/library/jquery-ui.min.css}" rel="stylesheet"
+          media="screen"/>
+    <link href="css/library/owl.carousel.css" th:href="@{/css/library/owl.carousel.css}" rel="stylesheet"
+          media="screen"/>
+    <link href="css/library/jquery.mb.YTPlayer.min.css" th:href="@{/css/library/jquery.mb.YTPlayer.min.css}"
+          rel="stylesheet" media="screen"/>
+
+    <link href="login/animate.css/animate.min.css" th:href="@{/login/animate.css/animate.min.css}" rel="stylesheet"
+          media="screen"/>
+    <link href="login/nprogress/nprogress.css" th:href="@{/login/nprogress/nprogress.css}" rel="stylesheet"
+          media="screen"/>
+    <link href="css/style.css" th:href="@{/css/style.css}" rel="stylesheet" media="screen"/>
+    <link rel="icon" type="image/x-icon" href="/favicon.png"/>
+</head>
+<body>
+<!-- Preloader -->
+<div id="preloader">
+    <div class="tb-cell">
+        <div id="page-loading">
+            <div></div>
+            <p>Loading</p>
+        </div>
+    </div>
+</div>
+
+<!-- Wrap -->
+<div id="wrap">
+
+    <!-- Header -->
+    <header id="header" class="header">
+        <div class="container">
+
+            <!-- Logo -->
+            <div class="logo float-left">
+                <a href="/" title=""><img src="images/logo-header.png" alt=""></a>
+            </div>
+            <!-- End Logo -->
+            <!-- Bars -->
+            <div class="bars" id="bars"></div>
+            <!-- End Bars -->
+
+            <!--Navigation-->
+            <nav class="navigation nav-c" id="navigation" data-menu-type="1200">
+                <div class="nav-inner">
+                    <a href="#" class="bars-close" id="bars-close">Close</a>
+                    <div class="tb">
+                        <div class="tb-cell">
+                            <ul class="menu-list text-uppercase">
+                               <li>
+                                    <a th:href="@{/}" title="">Home</a>
+
+                                </li>
+                                <li>
+                                    <a th:href="@{/about}" title="">About us</a>
+                                </li>
+                                <li>
+                                    <a href="#" title="">Hotel</a>
+                                </li>
+                                <li class="current-menu-parent">
+                                <th sec:authorize="isAuthenticated()">
+                                    <a th:href="@{/flights}" title="">Flights</a>
+                                </th>
+                                </li>
+                                <li>
+                                    <a href="#" title="">Car</a>
+                                </li>
+                                <li>
+                                    <a href="#" title="">Package</a>
+                                </li>
+                                <li>
+                                    <a href="#" title="">Tours</a>
+                                </li>
+
+                                <li sec:authorize="isAuthenticated()">
+                                    <a href="#" th:inline="text">[[${#httpServletRequest.remoteUser}]]</a>
+                                    <ul class="sub-menu">
+                                        <li>
+                                            <a href="user-booking.html" title="">User Booking</a>
+                                        </li>
+                                        <li>
+                                            <a href="user-profile.html" title="">User Profile</a>
+                                        </li>
+                                        <li>
+                                            <a th:href="@{/logout}" title="">Logout</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                        </div>
+                    </div>
+            </nav>
+            <!--End Navigation-->
+        </div>
+    </header>
+    <!-- End Header -->
+
+
+    <!--Banner-->
+    <section class="sub-banner">
+        <!--Background-->
+        <div class="bg-parallax bg-1"></div>
+        <!--End Background-->
+        <!-- Logo -->
+        <div class="logo-banner text-center">
+            <a href="" title="">
+                <img src="images/logo-banner.png" alt="">
+            </a>
+        </div>
+        <!-- Logo -->
+    </section>
+    <!--End Banner-->
+
+    <!-- Main -->
+    <div class="main">
+        <div class="container">
+            <div class="main-cn flight-page bg-white clearfix">
+                <div class="row">
+
+                    <!-- Flight Right -->
+                    <div class="col-md-9 col-md-push-3">
+
+                        <!-- Flight List -->
+                        <section class="flight-list">
+
+
+                            <!-- Flight List Head -->
+                            <div class="flight-list-head">
+                                <span class="icon"><img src="images/icon-outbound.png" alt=""></span>
+                                <h3>SKĄD - DOKĄD</h3>
+                                <p><span>110</span> trips</p>
+                            </div>
+                            <!-- Flight List Head -->
+
+                            <!-- Flight List Table -->
+                            <div class="flight-list-cn">
+                                <div class="responsive-table scroll-table">
+                                    <table class="table flight-table table-radio">
+                                        <thead>
+                                        <tr>
+                                            <th>Airlines</th>
+                                            <th>Departure</th>
+                                            <th>Arrival</th>
+                                            <th class="text-center">Duration</th>
+                                            <th class="text-center">Price</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td class="td-airline">
+                                                <div class="radio-checkbox">
+                                                    <input type="radio" name="airline" id="radio-air-1" class="radio">
+                                                    <label for="radio-air-1"></label>
+                                                </div>
+                                                <img src="images/flight/icon/icon-1.png" alt="">
+                                                American Airlines
+                                            </td>
+                                            <td class="td-time">
+                                                <p>08:35
+                                                    <small>AM</small>
+                                                    <span>BKK</span></p>
+                                            </td>
+                                            <td class="td-time">
+                                                <p>09:00
+                                                    <small>AM</small>
+                                                    <span>JFK</span></p>
+                                            </td>
+                                            <td class="td-stop text-center">
+                                                <div class="stop-cn">
+                                                    <label>21h15m</label>
+                                                    <span class="stops">
+                                                                <span class="stop"></span>
+                                                            </span>
+                                                    <label>1 Stop</label>
+                                                </div>
+
+                                            </td>
+                                            <td class="td-price text-center">
+                                                <span><ins>1,453</ins> USD</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td-airline">
+                                                <div class="radio-checkbox">
+                                                    <input type="radio" name="airline" id="radio-air-2" class="radio">
+                                                    <label for="radio-air-2"></label>
+                                                </div>
+                                                <img src="images/flight/icon/icon-2.png" alt="">
+                                                Vietnam Airlines
+                                            </td>
+                                            <td class="td-time">
+                                                <p>08:35
+                                                    <small>AM</small>
+                                                    <span>BKK</span></p>
+                                            </td>
+                                            <td class="td-time">
+                                                <p>09:00
+                                                    <small>AM</small>
+                                                    <span>JFK</span></p>
+                                            </td>
+                                            <td class="td-stop text-center">
+                                                <div class="stop-cn">
+                                                    <label>20h15m</label>
+                                                    <span class="stops">
+                                                                <span class="stop"></span>
+                                                            </span>
+                                                    <label>1 Stop</label>
+                                                </div>
+                                            </td>
+                                            <td class="td-price text-center">
+                                                <span><ins>1,453</ins> USD</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td-airline">
+                                                <div class="radio-checkbox">
+                                                    <input type="radio" name="airline" id="radio-air-3" class="radio">
+                                                    <label for="radio-air-3"></label>
+                                                </div>
+                                                <img src="images/flight/icon/icon-3.png" alt="">
+                                                Qatar Airways
+                                            </td>
+                                            <td class="td-time">
+                                                <p>08:35
+                                                    <small>AM</small>
+                                                    <span>BKK</span></p>
+                                            </td>
+                                            <td class="td-time">
+                                                <p>09:00
+                                                    <small>AM</small>
+                                                    <span>JFK</span></p>
+                                            </td>
+                                            <td class="td-stop text-center">
+                                                <div class="stop-cn">
+                                                    <label>21h15m</label>
+                                                    <span class="stops">
+                                                                <span class="stop"></span>
+                                                            </span>
+                                                    <label>1 Stop</label>
+                                                </div>
+                                            </td>
+                                            <td class="td-price text-center">
+                                                <span><ins>1,453</ins> USD</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td-airline">
+                                                <div class="radio-checkbox">
+                                                    <input type="radio" name="airline" id="radio-air-4" class="radio">
+                                                    <label for="radio-air-4"></label>
+                                                </div>
+                                                <img src="images/flight/icon/icon-4.png" alt="">
+                                                Singapore Airlines
+                                            </td>
+                                            <td class="td-time">
+                                                <p>08:35
+                                                    <small>AM</small>
+                                                    <span>BKK</span></p>
+                                            </td>
+                                            <td class="td-time">
+                                                <p>09:00
+                                                    <small>AM</small>
+                                                    <span>JFK</span></p>
+                                            </td>
+                                            <td class="td-stop text-center">
+                                                <div class="stop-cn">
+                                                    <label>1h15m</label>
+                                                    <span class="stops _2">
+                                                                <span class="stop"></span>
+                                                                <span class="stop"></span>
+                                                            </span>
+                                                    <label>2 Stops</label>
+                                                </div>
+                                            </td>
+                                            <td class="td-price text-center">
+                                                <span><ins>1,453</ins> USD</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td-airline">
+                                                <div class="radio-checkbox">
+                                                    <input type="radio" name="airline" id="radio-air-5" class="radio">
+                                                    <label for="radio-air-5"></label>
+                                                </div>
+                                                <img src="images/flight/icon/icon-1.png" alt="">
+                                                American Airlines
+                                            </td>
+                                            <td class="td-time">
+                                                <p>08:35
+                                                    <small>AM</small>
+                                                    <span>BKK</span></p>
+                                            </td>
+                                            <td class="td-time">
+                                                <p>09:00
+                                                    <small>AM</small>
+                                                    <span>JFK</span></p>
+                                            </td>
+                                            <td class="td-stop text-center">
+                                                <div class="stop-cn">
+                                                    <label>3h15m</label>
+                                                    <span class="stops">
+                                                                <span class="stop"></span>
+                                                            </span>
+                                                    <label>1 Stop</label>
+                                                </div>
+                                            </td>
+                                            <td class="td-price text-center">
+                                                <span><ins>1,453</ins> USD</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td-airline">
+                                                <div class="radio-checkbox">
+                                                    <input type="radio" name="airline" id="radio-air-6" class="radio">
+                                                    <label for="radio-air-6"></label>
+                                                </div>
+                                                <img src="images/flight/icon/icon-2.png" alt="">
+                                                Vietnam Airlines
+                                            </td>
+                                            <td class="td-time">
+                                                <p>08:35
+                                                    <small>AM</small>
+                                                    <span>BKK</span></p>
+                                            </td>
+                                            <td class="td-time">
+                                                <p>09:00
+                                                    <small>AM</small>
+                                                    <span>JFK</span></p>
+                                            </td>
+                                            <td class="td-stop text-center">
+                                                <div class="stop-cn">
+                                                    <label>5h15m</label>
+                                                    <span class="stops">
+                                                                <span class="stop"></span>
+                                                            </span>
+                                                    <label>1 Stop</label>
+                                                </div>
+                                            </td>
+                                            <td class="td-price text-center">
+                                                <span><ins>1,453</ins> USD</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td-airline">
+                                                <div class="radio-checkbox">
+                                                    <input type="radio" name="airline" id="radio-air-7" class="radio">
+                                                    <label for="radio-air-7"></label>
+                                                </div>
+                                                <img src="images/flight/icon/icon-3.png" alt="">
+                                                Qatar Airways
+                                            </td>
+                                            <td class="td-time">
+                                                <p>08:35
+                                                    <small>AM</small>
+                                                    <span>BKK</span></p>
+                                            </td>
+                                            <td class="td-time">
+                                                <p>09:00
+                                                    <small>AM</small>
+                                                    <span>JFK</span></p>
+                                            </td>
+                                            <td class="td-stop text-center">
+                                                <div class="stop-cn">
+                                                    <label>7h15m</label>
+                                                    <span class="stops">
+                                                                <span class="stop"></span>
+                                                            </span>
+                                                    <label>1 Stop</label>
+                                                </div>
+                                            </td>
+                                            <td class="td-price text-center">
+                                                <span><ins>1,453</ins> USD</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td-airline">
+                                                <div class="radio-checkbox">
+                                                    <input type="radio" name="airline" id="radio-air-8" class="radio">
+                                                    <label for="radio-air-8"></label>
+                                                </div>
+                                                <img src="images/flight/icon/icon-3.png" alt="">
+                                                Qatar Airways
+                                            </td>
+                                            <td class="td-time">
+                                                <p>08:35
+                                                    <small>AM</small>
+                                                    <span>BKK</span></p>
+                                            </td>
+                                            <td class="td-time">
+                                                <p>09:00
+                                                    <small>AM</small>
+                                                    <span>JFK</span></p>
+                                            </td>
+                                            <td class="td-stop text-center">
+                                                <div class="stop-cn">
+                                                    <label>10h15m</label>
+                                                    <span class="stops">
+                                                                <span class="stop"></span>
+                                                            </span>
+                                                    <label>1 Stop</label>
+                                                </div>
+                                            </td>
+                                            <td class="td-price text-center">
+                                                <span><ins>1,453</ins> USD</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td-airline">
+                                                <div class="radio-checkbox">
+                                                    <input type="radio" name="airline" id="radio-air-9" class="radio">
+                                                    <label for="radio-air-9"></label>
+                                                </div>
+                                                <img src="images/flight/icon/icon-3.png" alt="">
+                                                Qatar Airways
+                                            </td>
+                                            <td class="td-time">
+                                                <p>08:35
+                                                    <small>AM</small>
+                                                    <span>BKK</span></p>
+                                            </td>
+                                            <td class="td-time">
+                                                <p>09:00
+                                                    <small>AM</small>
+                                                    <span>JFK</span></p>
+                                            </td>
+                                            <td class="td-stop text-center">
+                                                <div class="stop-cn">
+                                                    <label>22h15m</label>
+                                                    <span class="stops">
+                                                                <span class="stop"></span>
+                                                            </span>
+                                                    <label>1 Stop</label>
+                                                </div>
+                                            </td>
+                                            <td class="td-price text-center">
+                                                <span><ins>1,453</ins> USD</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td-airline">
+                                                <div class="radio-checkbox">
+                                                    <input type="radio" name="airline" id="radio-air-10" class="radio">
+                                                    <label for="radio-air-10"></label>
+                                                </div>
+                                                <img src="images/flight/icon/icon-3.png" alt="">
+                                                Qatar Airways
+                                            </td>
+                                            <td class="td-time">
+                                                <p>08:35
+                                                    <small>AM</small>
+                                                    <span>BKK</span></p>
+                                            </td>
+                                            <td class="td-time">
+                                                <p>09:00
+                                                    <small>AM</small>
+                                                    <span>JFK</span></p>
+                                            </td>
+                                            <td class="td-stop text-center">
+                                                <div class="stop-cn">
+                                                    <label>23h15m</label>
+                                                    <span class="stops">
+                                                                <span class="stop"></span>
+                                                            </span>
+                                                    <label>1 Stop</label>
+                                                </div>
+                                            </td>
+                                            <td class="td-price text-center">
+                                                <span><ins>1,453</ins> USD</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td-airline">
+                                                <div class="radio-checkbox">
+                                                    <input type="radio" name="airline" id="radio-air-11" class="radio">
+                                                    <label for="radio-air-11"></label>
+                                                </div>
+                                                <img src="images/flight/icon/icon-3.png" alt="">
+                                                Qatar Airways
+                                            </td>
+                                            <td class="td-time">
+                                                <p>08:35
+                                                    <small>AM</small>
+                                                    <span>BKK</span></p>
+                                            </td>
+                                            <td class="td-time">
+                                                <p>09:00
+                                                    <small>AM</small>
+                                                    <span>JFK</span></p>
+                                            </td>
+                                            <td class="td-stop text-center">
+                                                <div class="stop-cn">
+                                                    <label>18h15m</label>
+                                                    <span class="stops">
+                                                                <span class="stop"></span>
+                                                            </span>
+                                                    <label>1 Stop</label>
+                                                </div>
+                                            </td>
+                                            <td class="td-price text-center">
+                                                <span><ins>1,453</ins> USD</span>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- End Flight List Table -->
+
+                            <!-- Flight List Head -->
+                            <div class="flight-list-head">
+                                <span class="icon"><img src="images/icon-inbound.png" alt=""></span>
+                                <h3>SKĄD - DOKĄD</h3>
+                                <p><span>110</span> trips</p>
+                            </div>
+                            <!-- Flight List Head -->
+
+                            <!-- Flight List Table -->
+                            <div class="flight-list-cn">
+                                <div class="responsive-table scroll-table">
+                                    <table class="table flight-table table-radio">
+                                        <thead>
+                                        <tr>
+                                            <th>Airlines</th>
+                                            <th>Departure</th>
+                                            <th>Arrival</th>
+                                            <th class="text-center">Duration</th>
+                                            <th class="text-center">Price</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td class="td-airline">
+                                                <div class="radio-checkbox">
+                                                    <input type="radio" name="airline" id="radio-air-1b" class="radio">
+                                                    <label for="radio-air-1b"></label>
+                                                </div>
+                                                <img src="images/flight/icon/icon-1.png" alt="">
+                                                American Airlines
+                                            </td>
+                                            <td class="td-time">
+                                                <p>08:35
+                                                    <small>AM</small>
+                                                    <span>BKK</span></p>
+                                            </td>
+                                            <td class="td-time">
+                                                <p>09:00
+                                                    <small>AM</small>
+                                                    <span>JFK</span></p>
+                                            </td>
+                                            <td class="td-stop text-center">
+                                                <div class="stop-cn">
+                                                    <label>21h15m</label>
+                                                    <span class="stops">
+                                                                <span class="stop"></span>
+                                                            </span>
+                                                    <label>1 Stop</label>
+                                                </div>
+
+                                            </td>
+                                            <td class="td-price text-center">
+                                                <span><ins>1,453</ins> USD</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td-airline">
+                                                <div class="radio-checkbox">
+                                                    <input type="radio" name="airline" id="radio-air-2b" class="radio">
+                                                    <label for="radio-air-2b"></label>
+                                                </div>
+                                                <img src="images/flight/icon/icon-2.png" alt="">
+                                                Vietnam Airlines
+                                            </td>
+                                            <td class="td-time">
+                                                <p>08:35
+                                                    <small>AM</small>
+                                                    <span>BKK</span></p>
+                                            </td>
+                                            <td class="td-time">
+                                                <p>09:00
+                                                    <small>AM</small>
+                                                    <span>JFK</span></p>
+                                            </td>
+                                            <td class="td-stop text-center">
+                                                <div class="stop-cn">
+                                                    <label>20h15m</label>
+                                                    <span class="stops">
+                                                                <span class="stop"></span>
+                                                            </span>
+                                                    <label>1 Stop</label>
+                                                </div>
+                                            </td>
+                                            <td class="td-price text-center">
+                                                <span><ins>1,453</ins> USD</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td-airline">
+                                                <div class="radio-checkbox">
+                                                    <input type="radio" name="airline" id="radio-air-3b" class="radio">
+                                                    <label for="radio-air-3b"></label>
+                                                </div>
+                                                <img src="images/flight/icon/icon-3.png" alt="">
+                                                Qatar Airways
+                                            </td>
+                                            <td class="td-time">
+                                                <p>08:35
+                                                    <small>AM</small>
+                                                    <span>BKK</span></p>
+                                            </td>
+                                            <td class="td-time">
+                                                <p>09:00
+                                                    <small>AM</small>
+                                                    <span>JFK</span></p>
+                                            </td>
+                                            <td class="td-stop text-center">
+                                                <div class="stop-cn">
+                                                    <label>21h15m</label>
+                                                    <span class="stops">
+                                                                <span class="stop"></span>
+                                                            </span>
+                                                    <label>1 Stop</label>
+                                                </div>
+                                            </td>
+                                            <td class="td-price text-center">
+                                                <span><ins>1,453</ins> USD</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td-airline">
+                                                <div class="radio-checkbox">
+                                                    <input type="radio" name="airline" id="radio-air-4b" class="radio">
+                                                    <label for="radio-air-4b"></label>
+                                                </div>
+                                                <img src="images/flight/icon/icon-4.png" alt="">
+                                                Singapore Airlines
+                                            </td>
+                                            <td class="td-time">
+                                                <p>08:35
+                                                    <small>AM</small>
+                                                    <span>BKK</span></p>
+                                            </td>
+                                            <td class="td-time">
+                                                <p>09:00
+                                                    <small>AM</small>
+                                                    <span>JFK</span></p>
+                                            </td>
+                                            <td class="td-stop text-center">
+                                                <div class="stop-cn">
+                                                    <label>1h15m</label>
+                                                    <span class="stops _2">
+                                                                <span class="stop"></span>
+                                                                <span class="stop"></span>
+                                                            </span>
+                                                    <label>2 Stops</label>
+                                                </div>
+                                            </td>
+                                            <td class="td-price text-center">
+                                                <span><ins>1,453</ins> USD</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td-airline">
+                                                <div class="radio-checkbox">
+                                                    <input type="radio" name="airline" id="radio-air-5b" class="radio">
+                                                    <label for="radio-air-5b"></label>
+                                                </div>
+                                                <img src="images/flight/icon/icon-1.png" alt="">
+                                                American Airlines
+                                            </td>
+                                            <td class="td-time">
+                                                <p>08:35
+                                                    <small>AM</small>
+                                                    <span>BKK</span></p>
+                                            </td>
+                                            <td class="td-time">
+                                                <p>09:00
+                                                    <small>AM</small>
+                                                    <span>JFK</span></p>
+                                            </td>
+                                            <td class="td-stop text-center">
+                                                <div class="stop-cn">
+                                                    <label>3h15m</label>
+                                                    <span class="stops">
+                                                                <span class="stop"></span>
+                                                            </span>
+                                                    <label>1 Stop</label>
+                                                </div>
+                                            </td>
+                                            <td class="td-price text-center">
+                                                <span><ins>1,453</ins> USD</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td-airline">
+                                                <div class="radio-checkbox">
+                                                    <input type="radio" name="airline" id="radio-air-6b" class="radio">
+                                                    <label for="radio-air-6b"></label>
+                                                </div>
+                                                <img src="images/flight/icon/icon-2.png" alt="">
+                                                Vietnam Airlines
+                                            </td>
+                                            <td class="td-time">
+                                                <p>08:35
+                                                    <small>AM</small>
+                                                    <span>BKK</span></p>
+                                            </td>
+                                            <td class="td-time">
+                                                <p>09:00
+                                                    <small>AM</small>
+                                                    <span>JFK</span></p>
+                                            </td>
+                                            <td class="td-stop text-center">
+                                                <div class="stop-cn">
+                                                    <label>5h15m</label>
+                                                    <span class="stops">
+                                                                <span class="stop"></span>
+                                                            </span>
+                                                    <label>1 Stop</label>
+                                                </div>
+                                            </td>
+                                            <td class="td-price text-center">
+                                                <span><ins>1,453</ins> USD</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td-airline">
+                                                <div class="radio-checkbox">
+                                                    <input type="radio" name="airline" id="radio-air-7b" class="radio">
+                                                    <label for="radio-air-7b"></label>
+                                                </div>
+                                                <img src="images/flight/icon/icon-3.png" alt="">
+                                                Qatar Airways
+                                            </td>
+                                            <td class="td-time">
+                                                <p>08:35
+                                                    <small>AM</small>
+                                                    <span>BKK</span></p>
+                                            </td>
+                                            <td class="td-time">
+                                                <p>09:00
+                                                    <small>AM</small>
+                                                    <span>JFK</span></p>
+                                            </td>
+                                            <td class="td-stop text-center">
+                                                <div class="stop-cn">
+                                                    <label>7h15m</label>
+                                                    <span class="stops">
+                                                                <span class="stop"></span>
+                                                            </span>
+                                                    <label>1 Stop</label>
+                                                </div>
+                                            </td>
+                                            <td class="td-price text-center">
+                                                <span><ins>1,453</ins> USD</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td-airline">
+                                                <div class="radio-checkbox">
+                                                    <input type="radio" name="airline" id="radio-air-8b" class="radio">
+                                                    <label for="radio-air-8b"></label>
+                                                </div>
+                                                <img src="images/flight/icon/icon-3.png" alt="">
+                                                Qatar Airways
+                                            </td>
+                                            <td class="td-time">
+                                                <p>08:35
+                                                    <small>AM</small>
+                                                    <span>BKK</span></p>
+                                            </td>
+                                            <td class="td-time">
+                                                <p>09:00
+                                                    <small>AM</small>
+                                                    <span>JFK</span></p>
+                                            </td>
+                                            <td class="td-stop text-center">
+                                                <div class="stop-cn">
+                                                    <label>10h15m</label>
+                                                    <span class="stops">
+                                                                <span class="stop"></span>
+                                                            </span>
+                                                    <label>1 Stop</label>
+                                                </div>
+                                            </td>
+                                            <td class="td-price text-center">
+                                                <span><ins>1,453</ins> USD</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td-airline">
+                                                <div class="radio-checkbox">
+                                                    <input type="radio" name="airline" id="radio-air-9b" class="radio">
+                                                    <label for="radio-air-9b"></label>
+                                                </div>
+                                                <img src="images/flight/icon/icon-3.png" alt="">
+                                                Qatar Airways
+                                            </td>
+                                            <td class="td-time">
+                                                <p>08:35
+                                                    <small>AM</small>
+                                                    <span>BKK</span></p>
+                                            </td>
+                                            <td class="td-time">
+                                                <p>09:00
+                                                    <small>AM</small>
+                                                    <span>JFK</span></p>
+                                            </td>
+                                            <td class="td-stop text-center">
+                                                <div class="stop-cn">
+                                                    <label>22h15m</label>
+                                                    <span class="stops">
+                                                                <span class="stop"></span>
+                                                            </span>
+                                                    <label>1 Stop</label>
+                                                </div>
+                                            </td>
+                                            <td class="td-price text-center">
+                                                <span><ins>1,453</ins> USD</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td-airline">
+                                                <div class="radio-checkbox">
+                                                    <input type="radio" name="airline" id="radio-air-10b" class="radio">
+                                                    <label for="radio-air-10b"></label>
+                                                </div>
+                                                <img src="images/flight/icon/icon-3.png" alt="">
+                                                Qatar Airways
+                                            </td>
+                                            <td class="td-time">
+                                                <p>08:35
+                                                    <small>AM</small>
+                                                    <span>BKK</span></p>
+                                            </td>
+                                            <td class="td-time">
+                                                <p>09:00
+                                                    <small>AM</small>
+                                                    <span>JFK</span></p>
+                                            </td>
+                                            <td class="td-stop text-center">
+                                                <div class="stop-cn">
+                                                    <label>23h15m</label>
+                                                    <span class="stops">
+                                                                <span class="stop"></span>
+                                                            </span>
+                                                    <label>1 Stop</label>
+                                                </div>
+                                            </td>
+                                            <td class="td-price text-center">
+                                                <span><ins>1,453</ins> USD</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td-airline">
+                                                <div class="radio-checkbox">
+                                                    <input type="radio" name="airline" id="radio-air-11b" class="radio">
+                                                    <label for="radio-air-11b"></label>
+                                                </div>
+                                                <img src="images/flight/icon/icon-3.png" alt="">
+                                                Qatar Airways
+                                            </td>
+                                            <td class="td-time">
+                                                <p>08:35
+                                                    <small>AM</small>
+                                                    <span>BKK</span></p>
+                                            </td>
+                                            <td class="td-time">
+                                                <p>09:00
+                                                    <small>AM</small>
+                                                    <span>JFK</span></p>
+                                            </td>
+                                            <td class="td-stop text-center">
+                                                <div class="stop-cn">
+                                                    <label>18h15m</label>
+                                                    <span class="stops">
+                                                                <span class="stop"></span>
+                                                            </span>
+                                                    <label>1 Stop</label>
+                                                </div>
+                                            </td>
+                                            <td class="td-price text-center">
+                                                <span><ins>1,453</ins> USD</span>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- End Flight List Table -->
+
+                        </section>
+                        <!-- End Flight List -->
+
+                    </div>
+                    <!-- End Flight Right -->
+
+                    <!-- Sidebar -->
+                    <div class="col-md-3 col-md-pull-9">
+                        <!-- Sidebar Content -->
+                        <div class="sidebar-cn">
+
+                            <!-- Search Result -->
+                            <div class="search-result">
+                                <p>
+                                    We found <br>
+                                    <ins>640</ins>
+                                    <span>properties availability</span>
+                                </p>
+                            </div>
+                            <!-- End Search Result -->
+                            <!-- Search Form Sidebar -->
+                            <div class="search-sidebar">
+                                <ul class="form-radio">
+                                    <li>
+                                        <div class="radio-checkbox">
+                                            <input type="radio" name="radio-1" id="radio-1" class="radio">
+                                            <label for="radio-1">Round Trip</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="radio-checkbox">
+                                            <input type="radio" name="radio-1" id="radio-2" class="radio">
+                                            <label for="radio-2">One-way</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="radio-checkbox">
+                                            <input type="radio" name="radio-1" id="radio-3" class="radio">
+                                            <label for="radio-3">Multiple Destinations</label>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="row">
+                                    <div class="form-search clearfix">
+                                        <div class="form-field col-md-12">
+                                            <label for="picking"><span>From:</span> City or airport</label>
+                                            <input type="text" name="picking" id="picking" value="" class="field-input">
+                                        </div>
+                                        <div class="form-field col-md-12">
+                                            <input type="text" name="flightto" id="flightto" value=""
+                                                   class="field-input" placeholder="To">
+                                        </div>
+                                        <div class="form-field field-date col-md-6">
+                                            <input type="text" class="field-input calendar-input" placeholder="Depart">
+                                        </div>
+                                        <div class="form-field field-date col-md-6">
+                                            <input type="text" class="field-input calendar-input" placeholder="Return">
+                                        </div>
+                                        <div class="form-field field-select col-md-6">
+                                            <div class="select">
+                                                <span data-placeholder="Select">Adults</span>
+                                                <select>
+                                                    <option>Adults</option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-field field-select col-md-6">
+                                            <div class="select">
+                                                <span data-placeholder="Select">Children</span>
+                                                <select>
+                                                    <option>Children</option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-submit col-md-12">
+                                            <button type="submit" class="awe-btn awe-btn-medium awe-search">Search
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Search Form Sidebar -->
+                            <!-- Max Flight Duration Slider -->
+                            <div class="widget-sidebar price-slider-sidebar">
+                                <h4 class="title-sidebar">Max Flight Duration</h4>
+                                <div class="slider-sidebar time-slider" data-start="1200">
+                                    <input type="text" class="range"/>
+                                </div>
+                            </div>
+                            <!-- End Max Flight Duration Slider -->
+                            <!-- Stops -->
+                            <div class="widget-sidebar facilities-sidebar">
+                                <h4 class="title-sidebar">Stops</h4>
+                                <ul class="widget-ul">
+                                    <li>
+                                        <div class="radio-checkbox">
+                                            <input name="radio-stop" id="stop-1" type="radio" class="radio"/>
+                                            <label for="stop-1">Non-stop-</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="radio-checkbox">
+                                            <input name="radio-stop" id="stop-2" type="radio" class="radio" checked/>
+                                            <label for="stop-2">Max 1 stop</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="radio-checkbox">
+                                            <input name="radio-stop" id="stop-3" type="radio" class="radio"/>
+                                            <label for="stop-3">Any stops</label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- End Stops -->
+                            <!-- Depart times Slider -->
+                            <div class="widget-sidebar price-slider-sidebar">
+                                <h4 class="title-sidebar">Depart times</h4>
+                                <div class="slider-sidebar time-slider" data-start="0" data-end="1440">
+                                    <input type="text" class="range"/>
+                                </div>
+                            </div>
+                            <!-- End Depart times Slider -->
+                            <!-- Return times Slider -->
+                            <div class="widget-sidebar price-slider-sidebar">
+                                <h4 class="title-sidebar">Return times</h4>
+                                <div class="slider-sidebar time-slider" data-start="0" data-end="1440">
+                                    <input type="text" class="range"/>
+                                </div>
+                            </div>
+                            <!-- End Return times Slider -->
+                            <!-- Airline -->
+                            <div class="widget-sidebar facilities-sidebar">
+                                <h4 class="title-sidebar">Airlines</h4>
+                                <ul class="widget-ul">
+                                    <li>
+                                        <div class="radio-checkbox">
+                                            <input id="check-1" type="checkbox" class="checkbox"/>
+                                            <label for="check-1">PLL LOT</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="radio-checkbox">
+                                            <input id="check-2" type="checkbox" class="checkbox" checked/>
+                                            <label for="check-2">WizzAir</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="radio-checkbox">
+                                            <input id="check-3" type="checkbox" class="checkbox"/>
+                                            <label for="check-3">Ryanair</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="radio-checkbox">
+                                            <input id="check-4" type="checkbox" class="checkbox"/>
+                                            <label for="check-4">easyJet</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="radio-checkbox">
+                                            <input id="check-5" type="checkbox" class="checkbox"/>
+                                            <label for="check-5">Lufthansa</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="radio-checkbox">
+                                            <input id="check-6" type="checkbox" class="checkbox"/>
+                                            <label for="check-6">British Airways</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="radio-checkbox">
+                                            <input id="check-7" type="checkbox" class="checkbox"/>
+                                            <label for="check-7">KLM</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="radio-checkbox">
+                                            <input id="check-8" type="checkbox" class="checkbox"/>
+                                            <label for="check-8">Delta Air Lines</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="radio-checkbox">
+                                            <input id="check-9" type="checkbox" class="checkbox"/>
+                                            <label for="check-9">United Airlines</label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- End Airline -->
+
+                        </div>
+                        <!-- End Sidebar Content -->
+                    </div>
+                    <!-- End Sidebar -->
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- End Main -->
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <!-- Logo -->
+                <div class="col-md-4">
+                    <div class="logo-foter">
+                        <a href="index.html" title=""><img src="images/logo-footer.png" alt=""></a>
+                    </div>
+                </div>
+                <!-- End Logo -->
+                <!-- Navigation Footer -->
+
+
+            </div>
+
+            <script src="js/library/jquery-1.11.0.min.js" th:src="@{/js/library/jquery-1.11.0.min.js}"
+                    type="text/javascript"></script>
+            <script src="js/library/jquery-ui.min.js" th:src="@{/js/library/jquery-ui.min.js}"
+                    type="text/javascript"></script>
+            <script src="js/library/bootstrap.min.js" th:src="@{/js/library/bootstrap.min.js}"
+                    type="text/javascript"></script>
+            <script src="js/library/owl.carousel.min.js" th:src="@{/js/library/owl.carousel.min.js}"
+                    type="text/javascript"></script>
+            <script src="js/library/parallax.min.js" th:src="@{/js/library/parallax.min.js}"
+                    type="text/javascript"></script>
+            <script src="js/library/jquery.nicescroll.js" th:src="@{/js/library/jquery.nicescroll.js}"
+                    type="text/javascript"></script>
+            <script src="js/library/jquery.ui.touch-punch.min.js" th:src="@{/js/library/jquery.ui.touch-punch.min.js}"
+                    type="text/javascript"></script>
+            <script src="js/library/jquery.mb.YTPlayer.min.js" th:src="@{/js/library/jquery.mb.YTPlayer.min.js}"
+                    type="text/javascript"></script>
+            <script src="js/library/SmoothScroll.js" th:src="@{/js/library/SmoothScroll.js}"
+                    type="text/javascript"></script>
+            <script src="js/script.js" th:src="@{/js/script.js}" type="text/javascript"></script>
+            <script th:src="@{/js/flightsearch.js}" type="text/javascript"></script>
+
+
+</body>
+</html>
