@@ -53,6 +53,7 @@ public class UserService {
         }
     }
 
+
     public ResponseEntity getUserAdditionalInfoByEmail(String email) {
         User user = getUserByEmail(email);
         if (user != null) {
