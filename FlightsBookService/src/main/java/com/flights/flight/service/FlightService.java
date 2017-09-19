@@ -54,7 +54,7 @@ public class FlightService {
 
     public ResponseEntity<List<Airport>> getAirports(String request) {
 
-        List<Airport> airports = flightRepository.getAirports(request);
+        List<Airport> airports = flightRepository.findAirportsAllIgnoringCase(request);
 
         if (!airports.isEmpty()) {
             return new ResponseEntity<>(airports, HttpStatus.OK);
@@ -72,14 +72,15 @@ public class FlightService {
     }
 
     private ResponseEntity<?> getSingleWayFlightsResponse(FlightSearchRequest request) {
-        List<Flight> flights = flightRepository.getFlights(
+        List<Flight> destinationFlights = flightRepository.getFlights(
                 request.getWhenceAirportCode(),
                 request.getDestinationAirportCode(),
                 request.getDepartureDate(),
                 request.getPeopleAmount()
         );
-        if (!flights.isEmpty()) {
-            return ResponseEntity.ok(flights);
+        if (!destinationFlights.isEmpty()) {
+            FlightsResponse flightsResponse = new FlightsResponse(destinationFlights);
+            return ResponseEntity.ok(flightsResponse);
         } else {
             return ResponseEntity.notFound().build();
         }
@@ -101,8 +102,8 @@ public class FlightService {
                 request.getPeopleAmount()
         );
         if (!destinationFlights.isEmpty() && !returningFlights.isEmpty()) {
-            BothWaysFlight bothWaysFlight = new BothWaysFlight(destinationFlights, returningFlights);
-            return ResponseEntity.ok(bothWaysFlight);
+            FlightsResponse flightsResponse = new FlightsResponse(destinationFlights, returningFlights);
+            return ResponseEntity.ok(flightsResponse);
         } else {
             return ResponseEntity.notFound().build();
         }
