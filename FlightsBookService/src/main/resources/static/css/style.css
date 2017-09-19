@@ -12086,3 +12086,8 @@ ul.verticle_bars li {
 #to-dropdown{
   width: 9em;
 }
+
+#login-error-message{
+  margin-bottom: 0;
+  margin-top: 10px;
+}
