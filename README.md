@@ -1,4 +1,4 @@
-Flights Booking web application project based on Spring spring framework.
+Flights Booking web application project based on Spring Boot framework.
 
 
 ![](https://image.ibb.co/m8jztk/dropdowns.png)
