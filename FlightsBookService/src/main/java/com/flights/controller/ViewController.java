@@ -22,6 +22,9 @@ public class ViewController {
         return "about";
     }
 
+    @RequestMapping(value = "/flights", method = RequestMethod.GET)
+    public String flightPage(){ return "flights";
+
     @RequestMapping(value = "/wizards", method = RequestMethod.GET)
     public String wizardsPage(){ return "wizards";
     }
