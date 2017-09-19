@@ -2,6 +2,7 @@ package com.flights.user.pojo;
 
 public class UserRegisterRequest {
 
+
     private String email;
     private String password;
 

@@ -1,5 +1,9 @@
 package com.flights.user.pojo;
 
+
+import org.springframework.stereotype.Component;
+
+@Component
 public class UserRegisterResponse {
 
     private boolean success = true;

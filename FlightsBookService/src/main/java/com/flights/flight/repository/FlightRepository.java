@@ -22,4 +22,5 @@ public interface FlightRepository extends CrudRepository<Flight, Integer> {
     @Query("SELECT A FROM Airport A WHERE A.country LIKE :request% OR A.town LIKE :request% " +
             "OR A.airportCode LIKE :request%")
     List<Airport> getAirports(@Param("request") String request);
+
 }
