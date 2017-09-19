@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layouts/layout}">
+
+
+<!--[if IE 7 ]>
+<html class="ie ie7"/> <![endif]-->
+<!--[if IE 8 ]>
+<html class="ie ie8"/> <![endif]-->
+<!--[if IE 9 ]>
+<html class="ie ie9"/> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="en"/> <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>SkyBooking</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- Font Google -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400%7COpen+Sans:300,400,600'
+          th:href="@{http://fonts.googleapis.com/css?family=Lato:300,400%7COpen+Sans:300,400,600}" rel="stylesheet"
+          type='text/css'/>
+    <!-- /Font Google -->
+    <link href="css/library/font-awesome.min.css" th:href="@{/css/library/font-awesome.min.css}"
+          rel="stylesheet"
+          media="screen"/>
+    <link href="css/library/bootstrap.min.css" th:href="@{/css/library/bootstrap.min.css}" rel="stylesheet"
+          media="screen"/>
+    <link href="css/library/jquery-ui.min.css" th:href="@{/css/library/jquery-ui.min.css}" rel="stylesheet"
+          media="screen"/>
+    <link href="css/library/owl.carousel.css" th:href="@{/css/library/owl.carousel.css}" rel="stylesheet"
+          media="screen"/>
+    <link href="css/library/jquery.mb.YTPlayer.min.css" th:href="@{/css/library/jquery.mb.YTPlayer.min.css}"
+          rel="stylesheet" media="screen"/>
+
+    <link href="login/animate.css/animate.min.css" th:href="@{/login/animate.css/animate.min.css}" rel="stylesheet"
+          media="screen"/>
+    <link href="login/nprogress/nprogress.css" th:href="@{/login/nprogress/nprogress.css}" rel="stylesheet"
+          media="screen"/>
+    <link href="css/style.css" th:href="@{/css/style.css}" rel="stylesheet" media="screen"/>
+    <link rel="icon" type="image/x-icon" href="/favicon.png"/>
+</head>
+<body>
+<!-- Preloader -->
+<div id="preloader">
+    <div class="tb-cell">
+        <div id="page-loading">
+            <div></div>
+            <p>Loading</p>
+        </div>
+    </div>
+</div>
+
+<!-- Wrap -->
+<div id="wrap">
+
+    <!-- Header -->
+    <header id="header" class="header">
+        <div class="container">
+
+            <!-- Logo -->
+            <div class="logo float-left">
+                <a href="/" title=""><img src="images/logo-header.png" alt=""></a>
+            </div>
+            <!-- End Logo -->
+            <!-- Bars -->
+            <div class="bars" id="bars"></div>
+            <!-- End Bars -->
+
+            <!--Navigation-->
+            <nav class="navigation nav-c" id="navigation" data-menu-type="1200">
+                <div class="nav-inner">
+                    <a href="#" class="bars-close" id="bars-close">Close</a>
+                    <div class="tb">
+                        <div class="tb-cell">
+                            <ul class="menu-list text-uppercase">
+                                <li class="current-menu-parent">
+                                    <a th:href="@{/}" title="">Home</a>
+
+                                </li>
+                                <li>
+                                    <a th:href="@{/about}" title="">About us</a>
+                                </li>
+                                <li>
+                                    <a href="#" title="">Hotel</a>
+                                </li>
+                                <li sec:authorize="isAuthenticated()">
+                                    <a th:href="@{/flights}" title="">Flights</a>
+                                </li>
+                                <li>
+                                    <a href="#" title="">Car</a>
+                                </li>
+                                <li>
+                                    <a href="#" title="">Package</a>
+                                </li>
+                                <li>
+                                    <a href="#" title="">Tours</a>
+                                </li>
+
+                                <li sec:authorize="isAuthenticated()">
+                                    <a href="#" th:inline="text">[[${#httpServletRequest.remoteUser}]]</a>
+                                    <ul class="sub-menu">
+                                        <li>
+                                            <a href="user-booking.html" title="">User Booking</a>
+                                        </li>
+                                        <li>
+                                            <a href="user-profile.html" title="">User Profile</a>
+                                        </li>
+                                        <li>
+                                            <a th:href="@{/logout}" title="">Logout</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                        </div>
+                    </div>
+            </nav>
+            <!--End Navigation-->
+        </div>
+    </header>
+    <!-- End Header -->
+    <!--Banner-->
+    <section class="sub-banner">
+        <!--Background-->
+        <div class="bg-parallax bg-1"></div>
+        <!--End Background-->
+        <!-- Logo -->
+        <div class="logo-banner text-center">
+            <a href="" title="">
+                <img src="images/logo-banner.png" alt="">
+            </a>
+        </div>
+        <!-- Logo -->
+    </section>
+    <!--End Banner-->
+
+
+
+
+
+
+
+    <!-- Main -->
+    <div class="main">
+        <div class="container">
+            <div class="main-cn flight-page bg-white clearfix">
+                <div class="row">
+
+                    <!-- Flight Right -->
+                    <div class="col-md-9 col-md-push-3">
+
+                        <!-- Flight List -->
+                        <section class="flight-list">
+
+                            <!-- page content -->
+                            <div class="">
+
+                                <div class="clearfix"></div>
+
+                                <div class="row">
+
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class="x_panel">
+                                            <div class="x_title">
+                                                <center><h2><small>Fill out the form below and book your flight</small></h2></center><br>
+                                            </div>
+                                            <div class="x_content">
+
+
+                                                <!-- Smart Wizard -->
+                                                <div id="wizard" class="form_wizard wizard_horizontal">
+                                                    <ul class="wizard_steps">
+                                                        <li>
+                                                            <a href="#step-1">
+                                                                <span class="step_no">2</span>
+                                                                <span class="step_descr">
+                                              Passengers<br />
+                                          </span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#step-2">
+                                                                <span class="step_no">3</span>
+                                                                <span class="step_descr">
+                                              Baggage limit<br />
+                                          </span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#step-3">
+                                                                <span class="step_no">4</span>
+                                                                <span class="step_descr">
+                                              Payment method<br />
+                                          </span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#step-4">
+                                                                <span class="step_no">5</span>
+                                                                <span class="step_descr">
+                                              Confirmation<br />
+                                          </span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                    <div id="step-1">
+                                                        <form class="form-horizontal form-label-left">
+
+
+
+                                                            <div class="form-group">
+                                                                <label class="control-label col-md-3 col-sm-3 col-xs-3">Gender</label>
+                                                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                                                    <select class="form-control">
+                                                                        <option>Choose option</option>
+                                                                        <option>Mrs.</option>
+                                                                        <option>Mr.</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">First Name <span class="required">*</span>
+                                                                </label>
+                                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                    <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Last Name <span class="required">*</span>
+                                                                </label>
+                                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                    <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Date Of Birth <span class="required">*</span>
+                                                                </label>
+                                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                    <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Phone <span class="required">*</span>
+                                                                </label>
+                                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                    <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Email <span class="required">*</span>
+                                                                </label>
+                                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                    <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
+                                                                </div>
+                                                            </div>
+
+
+
+
+
+                                                        </form>
+
+                                                    </div>
+                                                    <div id="step-2">
+                                                        <p>
+                                                            tutaj dane
+                                                        </p>
+                                                    </div>
+                                                    <div id="step-3">
+                                                        <p>
+                                                            tutaj dane
+                                                        </p>
+                                                    </div>
+                                                    <div id="step-4">
+                                                        <p>tutaj dane
+                                                        </p>
+                                                    </div>
+
+                                                </div>
+                                                <!-- End SmartWizard Content -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- /page content -->
+
+                        </section>
+                        <!-- End Flight List -->
+
+                    </div>
+                    <!-- End Flight Right -->
+
+                    <!-- Sidebar -->
+                    <div class="col-md-3 col-md-pull-9">
+                        <!-- Sidebar Content -->
+                        <div class="sidebar-cn">
+
+                            <!-- Search Result -->
+                            <div class="search-result">
+                                <p>
+                                    <span>Your current reservation / - Basket</span>
+                                </p>
+                            </div>
+                            <!-- End Search Result -->
+                            <!-- Search Form Sidebar -->
+                            <div class="search-sidebar">
+                                <div class="row">
+                                    <div class="form-search clearfix">
+                                        <div class="form-field col-md-12">
+                                            <label for="picking"><span>From:</span> City or airport</label>
+                                            <input type="text" name="picking" id="picking" value="" class="field-input">
+                                        </div>
+                                        <div class="form-field col-md-12">
+                                            <input type="text" name="flightto" id="flightto" value="" class="field-input" placeholder="To">
+                                        </div>
+                                        <div class="form-field field-date col-md-6">
+                                            <input type="text" class="field-input calendar-input" placeholder="Depart">
+                                        </div>
+                                        <div class="form-field field-date col-md-6">
+                                            <input type="text" class="field-input calendar-input" placeholder="Return">
+                                        </div>
+                                        <div class="form-field field-select col-md-6">
+                                            <div class="select">
+                                                <span data-placeholder="Select">Adults</span>
+                                                <select>
+                                                    <option>Adults</option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-field field-select col-md-6">
+                                            <div class="select">
+                                                <span data-placeholder="Select">Children</span>
+                                                <select>
+                                                    <option>Children</option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Search Form Sidebar -->
+                    </div>
+                    <!-- End Sidebar Content -->
+                </div>
+                <!-- End Sidebar -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Main -->
+
+
+
+
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <!-- Logo -->
+            <div class="col-md-4">
+                <div class="logo-foter">
+                    <a href="/" title=""><img src="images/logo-footer.png" alt=""></a>
+                </div>
+            </div>
+            <!-- End Logo -->
+            <!-- Navigation Footer -->
+
+
+        </div>
+
+        <script src="js/library/jquery-1.11.0.min.js" th:src="@{/js/library/jquery-1.11.0.min.js}"
+                type="text/javascript"></script>
+        <script src="js/library/jquery-ui.min.js" th:src="@{/js/library/jquery-ui.min.js}" type="text/javascript"></script>
+        <script src="js/library/bootstrap.min.js" th:src="@{/js/library/bootstrap.min.js}"
+                type="text/javascript"></script>
+        <script src="js/library/owl.carousel.min.js" th:src="@{/js/library/owl.carousel.min.js}"
+                type="text/javascript"></script>
+        <script src="js/library/parallax.min.js" th:src="@{/js/library/parallax.min.js}" type="text/javascript"></script>
+        <script src="js/library/jquery.nicescroll.js" th:src="@{/js/library/jquery.nicescroll.js}"
+                type="text/javascript"></script>
+        <script src="js/library/jquery.ui.touch-punch.min.js" th:src="@{/js/library/jquery.ui.touch-punch.min.js}"
+                type="text/javascript"></script>
+        <script src="js/library/jquery.mb.YTPlayer.min.js" th:src="@{/js/library/jquery.mb.YTPlayer.min.js}"
+                type="text/javascript"></script>
+        <script src="js/library/SmoothScroll.js" th:src="@{/js/library/SmoothScroll.js}" type="text/javascript"></script>
+        <script src="js/script.js" th:src="@{/js/script.js}" type="text/javascript"></script>
+        <script th:src="@{/js/flightsearch.js}" type="text/javascript"></script>
+        <script th:src="@{/js/jquery.smartWizard.js}" type="text/javascript"></script>
+        <script th:src="@{/js/custom.min.js}" type="text/javascript"></script>
+
+
+</body>
+</html>
