@@ -17,26 +17,28 @@ $(document).ready(function () {
 
 function renderFlights(tableBody, flightsData) {
     for (var i = 0; i < flightsData.length; i++) {
-        tableBody.append("<tr>");
-        tableBody.append("<td class=\"td-number\">" + flightsData[i].flightNumber + "</td>");
-        tableBody.append("<td class=\"td-time\">" +
+        var html = "";
+        html += "<tr>";
+        html += "<td class=\"td-number\">" + flightsData[i].flightNumber + "</td>";
+        html += "<td class=\"td-time\">" +
             "<p>" + convertTimeToString(flightsData[i].departureTime) +
-            "<span>" + flightsData[i].whence + "</span></p></td>");
-        tableBody.append("<td class=\"td-time\">" +
+            "<span>" + flightsData[i].whence + "</span></p></td>";
+        html += "<td class=\"td-time\">" +
             "<p>" + calculateArrivalTime(flightsData[i].departureTime, flightsData[i].flightTime) +
-            "<span>" + flightsData[i].destination + "</span></p></td>");
-        tableBody.append("<td class=\"td-stop text-center\">" +
+            "<span>" + flightsData[i].destination + "</span></p></td>";
+        html += "<td class=\"td-stop text-center\">" +
             "<div class=\"stop-cn\">" +
             "<label>" + convertTimeToString(flightsData[i].flightTime) + " h</label>" +
             "<span class=\"stops\">" +
             "<span class=\"stop\"></span>" +
             "</span>" +
             "<label>1 Stop</label>" +
-            "</div>");
-        tableBody.append("<td class=\"td-price text-center\">" +
+            "</div>";
+        html += "<td class=\"td-price text-center\">" +
             "<span><ins>" + flightsData[i].price + "</ins> USD</span>" +
-            "</td>");
-        tableBody.append("</tr>");
+            "</td>";
+        html += "</tr>";
+        tableBody.append(html);
     }
 }
 
