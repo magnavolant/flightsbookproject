@@ -2,15 +2,15 @@ package com.flights.user.controller;
 
 import com.flights.user.pojo.UserChangeInfoRequest;
 import com.flights.user.pojo.UserRegisterRequest;
-import com.flights.user.pojo.UserRegisterResponse;
 import com.flights.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 public class UserController {
 
     private UserService userService;
@@ -20,8 +20,10 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public String register(@RequestBody UserRegisterRequest request, Model model) {
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST,
+            consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public String register(@ModelAttribute UserRegisterRequest request, Model model) {
 
         if (userService.create(request).getBody().isSuccess()) {
             model.addAttribute("userExists", true);

@@ -1,7 +1,10 @@
 package com.flights.flight.controller;
 
 
-import com.flights.flight.pojo.*;
+import com.flights.flight.pojo.Airport;
+import com.flights.flight.pojo.FlightCreateRequest;
+import com.flights.flight.pojo.FlightCreateResponse;
+import com.flights.flight.pojo.FlightSearchRequest;
 import com.flights.flight.service.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
