@@ -2,15 +2,19 @@ package com.flights.flight.pojo;
 
 import java.util.List;
 
-public class BothWaysFlight {
+public class FlightsResponse {
 
     private List<Flight> destinationFlights;
     private List<Flight> returningFlights;
 
-    public BothWaysFlight() {
+    public FlightsResponse() {
     }
 
-    public BothWaysFlight(List<Flight> destinationFlights, List<Flight> returningFlights) {
+    public FlightsResponse(List<Flight> destinationFlights){
+        this.destinationFlights = destinationFlights;
+    }
+
+    public FlightsResponse(List<Flight> destinationFlights, List<Flight> returningFlights) {
         this.destinationFlights = destinationFlights;
         this.returningFlights = returningFlights;
     }

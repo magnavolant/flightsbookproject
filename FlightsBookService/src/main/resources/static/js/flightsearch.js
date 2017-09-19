@@ -96,7 +96,7 @@ $(document).ready(function () {
                 localStorage.setItem("data", JSON.stringify(data));
                 setTimeout(function () {
                     $("#flight-found-alert").fadeOut(500);
-                    window.location.href = "/testflightspage";
+                    window.location.href = "/flights";
                 }, 1500);
             },
             error: function (xhr) {
