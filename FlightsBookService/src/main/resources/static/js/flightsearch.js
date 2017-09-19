@@ -38,7 +38,6 @@ $(document).ready(function () {
     //BUTTON LISTENER
     $("#search-btn").click(function (event) {
         event.preventDefault();
-        //TODO NOW ITS SENDING INPUT SHOULD CONVERT TO AIRPORT CODE
 
         var formData = {
             whenceAirportCode: fromValue.val(),
@@ -70,8 +69,10 @@ $(document).ready(function () {
                 contentType: "application/json",
                 success: function (data, status, jqXHR) {
                     for (var i = 0; i < data.length; i++) {
-                        $("<li class='ss'>" + data[i].airportCode + "  " + data[i].town + "</li>").hide().appendTo(list)
-                            .delay(i * 120).fadeIn(230);
+                        $("<li class='ss'>" +
+                            "<span class=\"glyphicon glyphicon-plane\" aria-hidden=\"true\"></span>"
+                            + data[i].airportCode + "  " + data[i].town + "</li>")
+                            .hide().appendTo(list).delay(i * 120).fadeIn(230);
                     }
                 }
             });
