@@ -48,7 +48,6 @@ $(document).ready(function () {
             Number($("#adults-amount").find("option:selected").text()) +
             Number($("#children-amount").find("option:selected").text())
         };
-        console.log(JSON.stringify(formData));
         postData(formData)
     });
 
@@ -79,10 +78,6 @@ $(document).ready(function () {
         } else {
             list.css({'display': 'none'});
         }
-        //SOMETIMES IS BUGGED
-        // setTimeout(function () {
-        //     list.empty();
-        // }, 5000);
     }
 
     function postData(data) {

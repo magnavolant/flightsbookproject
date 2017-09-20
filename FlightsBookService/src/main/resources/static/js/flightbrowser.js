@@ -2,18 +2,31 @@ $(document).ready(function () {
     var data = JSON.parse(localStorage.getItem("data"));
     localStorage.removeItem("data");
 
-    //RENDERING DESTINATION FL
+    //VARS
     var destinationFlights = data.destinationFlights;
-    var tableBody = $("#destination-flights").find("tbody");
+    var returningFlights = data.returningFlights;
+    var destinationTableBody = $("#destination-flights").find("tbody");
+    var returningTableBody = $("#returning-flights").find("tbody");
+    var totalFlightsFound = destinationFlights.length;
 
+    //RENDERING DESTINATION FLIGHTS
     $("#from-flights-found").append("<span>" + destinationFlights.length + "</span> ");
+    renderFlights(destinationTableBody, destinationFlights);
 
-    console.log(JSON.stringify(destinationFlights));
-    renderFlights(tableBody, destinationFlights);
+    //RENDERING RETURN FLIGHTS IF 2 WAYS PICKED
+    if (returningFlights !== null) {
+        totalFlightsFound += returningFlights.length;
+        $("#to-flights-found").append("<span>" + returningFlights.length + "</span> ");
+        renderFlights(returningTableBody, returningFlights);
 
+    } else {
+        $("#ret-tab").attr("hidden", "hidden");
+    }
+
+    //RENDERING TOTAL FLIGHTS
+    $("#total-found").append(totalFlightsFound);
 
 });
-
 
 function renderFlights(tableBody, flightsData) {
     for (var i = 0; i < flightsData.length; i++) {
