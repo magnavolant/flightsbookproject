@@ -23,14 +23,14 @@ Flights Booking web application project
     <td></td>
   </tr>
   
-      <tr>
+<tr>
     <td>- Heroku</td>
     <td>- jQuery</td>
     <td></td>
   </tr>
   
   
-        <tr>
+<tr>
     <td></td>
     <td>- Bootstrap</td>
     <td></td>
