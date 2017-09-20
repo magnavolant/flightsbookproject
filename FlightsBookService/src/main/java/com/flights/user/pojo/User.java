@@ -20,10 +20,11 @@ public class User {
     public User() {
     }
 
-    public User(String email, String password, int role) {
+    public User(String email, String password, int role, boolean enabled) {
         this.email = email;
         this.password = password;
         this.role_id = role;
+        this.enabled = enabled;
     }
 
     public int getId() {

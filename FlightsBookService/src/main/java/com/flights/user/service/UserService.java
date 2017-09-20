@@ -25,7 +25,7 @@ public class UserService {
     public ResponseEntity<UserRegisterResponse> create(UserRegisterRequest request) {
 
         if (!userAlreadyExists(request.getEmail())) {
-            User user = new User(request.getEmail(), request.getPassword(), User.USER);
+            User user = new User(request.getEmail(), request.getPassword(), User.USER, true);
             userRepository.save(user);
             return new ResponseEntity<>(new UserRegisterResponse(), HttpStatus.OK);
         } else {
