@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 public class UserController {
 
     private UserService userService;
@@ -21,18 +21,32 @@ public class UserController {
     }
 
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST,
-            consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public String register(@ModelAttribute UserRegisterRequest request, Model model) {
+    @RequestMapping (value = "/register", method = RequestMethod.POST)
+    public ResponseEntity create(@RequestBody UserRegisterRequest request) {
+        ResponseEntity responseEntity = userService.create(request);
 
-        if (userService.create(request).getBody().isSuccess()) {
-            model.addAttribute("userExists", true);
-            return "index";
-        } else {
-            model.addAttribute("userExists", false);
-            return "index";
-        }
+        return responseEntity;
     }
+
+
+
+
+
+
+
+
+//    @RequestMapping(value = "/register", method = RequestMethod.POST,
+//            consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+//    public String register(@ModelAttribute UserRegisterRequest request, Model model) {
+//
+//        if (userService.create(request).getBody().isSuccess()) {
+//            model.addAttribute("userExists", true);
+//            return "index";
+//        } else {
+//            model.addAttribute("userExists", false);
+//            return "index";
+//        }
+//    }
 
 
     @RequestMapping(value = "/updateinfo", method = RequestMethod.POST)

@@ -103,14 +103,8 @@
                                 </li>
 
                                 <li sec:authorize="isAuthenticated()">
-                                    <a href="#" th:inline="text">[[${#httpServletRequest.remoteUser}]]</a>
+                                    <a href="/wizards" th:inline="text">[[${#httpServletRequest.remoteUser}]]</a>
                                     <ul class="sub-menu">
-                                        <li>
-                                            <a href="user-booking.html" title="">User Booking</a>
-                                        </li>
-                                        <li>
-                                            <a href="user-profile.html" title="">User Profile</a>
-                                        </li>
                                         <li>
                                             <a th:href="@{/logout}" title="">Logout</a>
                                         </li>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="register" class="animate form registration_form">
+    <section class="login_content">
+        <form th:action="" th:method="">
+            <h1>Create Account</h1>
+            <div>
+                <input type="email" class="form-control" name="email" placeholder="Email" required=""/>
+            </div>
+            <div>
+                <input type="password" class="form-control" name="password" placeholder="Password" required=""/>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-default submit">Register</button>
+            </div>
+            <div id="user-already-exists" hidden="hidden">
+                User with this email already exists!
+            </div>
+            <div id="user-created" hidden="hidden">
+                User created successfully!
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="separator">
+                <p class="change_link">Already a member ?
+                    <a href="#signin" class="to_register"> Log in </a>
+                </p>
+
+                <div class="clearfix"></div>
+                <br/>
+            </div>
+        </form>
+    </section>
+</div>
+
+
+<div class="form-field field-to">
+    <label for="flight-to"><span>To :</span> Country, Airpor</label>
+    <input type="text" required id="flight-to" class="field-input"/>
+    <input type="hidden" id="to-value"/>
+    <ul id="to-dropdown" class="airports-dropdown"></ul>
+</div>
+<div class="form-field field-date">
+    <input type="text" required id="flight-departing" class="field-input calendar-input" placeholder="Departing"/>
+</div>
+<div class="form-field field-date">
+    <input type="text" id="flight-returning" class="field-input calendar-input" placeholder="Returning"/>
+
+<div class="form-submit">
+    <button id="search-btn" type="submit" class="awe-btn awe-btn-medium awe-search">
+        Search
+    </button>
+</div>
+</div>
+<div class="alert alert-danger" id="flight-not-found-alert" role="alert" hidden="hidden">
+    Flights not found, try different input.
+</div>
+<div class="alert alert-success" id="flight-found-alert" role="alert" hidden="hidden">
+    Flights found redirecting...
+</div>
+
+
+</body>
+</html>
