@@ -30,7 +30,7 @@ public class DefaultAuthenticationProvider implements AuthenticationProvider {
 
         User user = userRepository.getUserByEmail(email);
 
-        if (user != null) {
+        if (user != null && user.isEnabled()) {
             if (user.getPassword().equals(password)) {
                 if (user.getRole() == User.USER) {
                     return new UsernamePasswordAuthenticationToken
