@@ -101,14 +101,8 @@
                                 </li>
 
                                 <li sec:authorize="isAuthenticated()">
-                                    <a href="#" th:inline="text">[[${#httpServletRequest.remoteUser}]]</a>
+                                    <a href="/wizards" th:inline="text">[[${#httpServletRequest.remoteUser}]]</a>
                                     <ul class="sub-menu">
-                                        <li>
-                                            <a href="user-booking.html" title="">User Booking</a>
-                                        </li>
-                                        <li>
-                                            <a href="user-profile.html" title="">User Profile</a>
-                                        </li>
                                         <li>
                                             <a th:href="@{/logout}" title="">Logout</a>
                                         </li>
@@ -184,7 +178,7 @@
                                 <img src="images/team/img-1.jpg" alt="">
                             </figure>
                             <h3>Korneliusz</h3>
-                            <span>Junior Software Developer</span>
+                            <span>Junior Software Developer with Front-end</span>
                         </div>
                         <!-- End Team Item -->
                         <!-- Team Item -->
@@ -193,7 +187,7 @@
                                 <img src="images/team/img-2.jpg" alt="">
                             </figure>
                             <h3>Mateusz</h3>
-                            <span>Java Developer</span>
+                            <span>Java Developer with Front-end</span>
                         </div>
                         <!-- End Team Item -->
                         <!-- Team Item -->
@@ -223,7 +217,7 @@
             <!-- Logo -->
             <div class="col-md-4">
                 <div class="logo-foter">
-                    <a href="index.html" title=""><img src="images/logo-footer.png" alt=""></a>
+                    <a href="/" title=""><img src="images/logo-footer.png" alt=""></a>
                 </div>
             </div>
             <!-- End Logo -->
