@@ -30,9 +30,9 @@ public class UserService {
             return new ResponseEntity<>(new UserRegisterResponse(), HttpStatus.OK);
         } else {
             UserRegisterResponse errorResponse =
-                    new UserRegisterResponse(false, "USER WITH EMAIL " + request.getEmail() + " ALREADY EXISTS");
+                    new UserRegisterResponse(false);
 
-            return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(errorResponse, HttpStatus.OK);
         }
     }
 
