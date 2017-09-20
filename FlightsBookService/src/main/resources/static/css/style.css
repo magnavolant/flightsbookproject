@@ -12073,7 +12073,7 @@ ul.verticle_bars li {
   margin-top: 10px;
   margin-bottom: 0;
 }
-.airports-dropdown{
+.airports-dropdown-main{
   list-style: none;
   position: absolute;
   padding-right: 3px;
@@ -12081,11 +12081,11 @@ ul.verticle_bars li {
   background: white;
   padding-left: 3px;
 }
-.airports-dropdown li:hover{
+.airports-dropdown-main li:hover{
   background-color: #b5b5b5;
 }
 
-#to-dropdown{
+[name=main]{
   width: 9em;
 }
 
@@ -12098,6 +12098,18 @@ ul.verticle_bars li {
   margin-right: 6px;
 }
 
+.airports-dropdown-mini{
+  z-index: 10;
+  list-style: none;
+  position: absolute;
+  padding-right: 3px;
+  width: 15.8em;
+  background: white;
+  padding-left: 3px;
+}
+.airports-dropdown-mini li:hover{
+  background-color: #b5b5b5;
+}
 
 /* 26. Booking Form
  --------------------------------------------------------------------------------*/
