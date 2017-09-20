@@ -23,7 +23,7 @@ $(document).ready(function () {
         $("#ret-tab").attr("hidden", "hidden");
     }
 
-    //RENDERING TOTAL FLIGHTS
+    //RENDERING TOTAL FLIGHTS NUMBER
     $("#total-found").append(totalFlightsFound);
 
 });

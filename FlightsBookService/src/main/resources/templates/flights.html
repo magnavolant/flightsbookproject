@@ -233,66 +233,54 @@
                             <!-- End Search Result -->
                             <!-- Search Form Sidebar -->
                             <div class="search-sidebar">
-                                <ul class="form-radio">
-                                    <li>
-                                        <div class="radio-checkbox">
-                                            <input type="radio" name="radio-1" id="radio-1" class="radio">
-                                            <label for="radio-1">Round Trip</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="radio-checkbox">
-                                            <input type="radio" name="radio-1" id="radio-2" class="radio">
-                                            <label for="radio-2">One-way</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="radio-checkbox">
-                                            <input type="radio" name="radio-1" id="radio-3" class="radio">
-                                            <label for="radio-3">Multiple Destinations</label>
-                                        </div>
-                                    </li>
-                                </ul>
                                 <div class="row">
                                     <div class="form-search clearfix">
-                                        <div class="form-field col-md-12">
-                                            <label for="picking"><span>From:</span> City or airport</label>
-                                            <input type="text" name="picking" id="picking" value="" class="field-input">
+                                        <div class="form-field field-from">
+                                            <label for="flight-from"><span>Flight from:</span> Airport</label>
+                                            <input type="text" name="flightfrom" id="flight-from" class="field-input" required/>
+                                            <input type="hidden" id="from-value"/>
+                                            <ul id="from-dropdown" class="airports-dropdown"></ul>
                                         </div>
-                                        <div class="form-field col-md-12">
-                                            <input type="text" name="flightto" id="flightto" value=""
-                                                   class="field-input" placeholder="To">
+                                        <div class="form-field field-to">
+                                            <label for="flight-to"><span>To :</span> Country, Airpor</label>
+                                            <input type="text" required id="flight-to" class="field-input"/>
+                                            <input type="hidden" id="to-value"/>
+                                            <ul id="to-dropdown" class="airports-dropdown"></ul>
                                         </div>
-                                        <div class="form-field field-date col-md-6">
-                                            <input type="text" class="field-input calendar-input" placeholder="Depart">
+                                        <div class="form-field field-date">
+                                            <input type="text" required id="flight-departing" class="field-input calendar-input"
+                                                   placeholder="Departing"/>
                                         </div>
-                                        <div class="form-field field-date col-md-6">
-                                            <input type="text" class="field-input calendar-input" placeholder="Return">
+                                        <div class="form-field field-date">
+                                            <input type="text" id="flight-returning" class="field-input calendar-input"
+                                                   placeholder="Returning"/>
                                         </div>
-                                        <div class="form-field field-select col-md-6">
+                                        <div class="form-field field-select field-adult">
                                             <div class="select">
-                                                <span data-placeholder="Select">Adults</span>
-                                                <select>
-                                                    <option>Adults</option>
+                                                <span>Adults</span>
+                                                <select required id="adults-amount">
+                                                    <option disabled selected>Adults</option>
                                                     <option>1</option>
                                                     <option>2</option>
                                                     <option>3</option>
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="form-field field-select col-md-6">
+                                        <div class="form-field field-select field-children">
                                             <div class="select">
-                                                <span data-placeholder="Select">Children</span>
-                                                <select>
-                                                    <option>Children</option>
+                                                <span>Children</span>
+                                                <select required id="children-amount">
+                                                    <option disabled selected>Children</option>
+                                                    <option>0</option>
                                                     <option>1</option>
                                                     <option>2</option>
                                                     <option>3</option>
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="form-submit col-md-12">
-                                            <button type="submit" class="awe-btn awe-btn-medium awe-search">Search
+                                        <div class="form-submit">
+                                            <button id="search-btn" type="submit" class="awe-btn awe-btn-medium awe-search">
+                                                Search
                                             </button>
                                         </div>
                                     </div>
@@ -307,31 +295,6 @@
                                 </div>
                             </div>
                             <!-- End Max Flight Duration Slider -->
-                            <!-- Stops -->
-                            <div class="widget-sidebar facilities-sidebar">
-                                <h4 class="title-sidebar">Stops</h4>
-                                <ul class="widget-ul">
-                                    <li>
-                                        <div class="radio-checkbox">
-                                            <input name="radio-stop" id="stop-1" type="radio" class="radio"/>
-                                            <label for="stop-1">Non-stop-</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="radio-checkbox">
-                                            <input name="radio-stop" id="stop-2" type="radio" class="radio" checked/>
-                                            <label for="stop-2">Max 1 stop</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="radio-checkbox">
-                                            <input name="radio-stop" id="stop-3" type="radio" class="radio"/>
-                                            <label for="stop-3">Any stops</label>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- End Stops -->
                             <!-- Depart times Slider -->
                             <div class="widget-sidebar price-slider-sidebar">
                                 <h4 class="title-sidebar">Depart times</h4>
