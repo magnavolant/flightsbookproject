@@ -38,8 +38,8 @@ Flights Booking web application project
   
   
 <tr>
-    <td>- Bootstrap</td>
     <td>.</td>
+    <td>- Bootstrap</td>
      <td>.</td>
      <td>.</td>
   </tr>
