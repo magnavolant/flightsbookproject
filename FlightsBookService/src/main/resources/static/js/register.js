@@ -37,9 +37,7 @@ $(document).ready(function () {
                     document.getElementById("user-created").style.display = "none";
                     document.getElementById("user-already-exists").style.color = "#e60000";
                     document.getElementById("email").style.border = "2px solid #e60000";
-
                 }
-
             }
         });
     }
